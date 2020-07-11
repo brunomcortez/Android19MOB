@@ -3,4 +3,20 @@
     <color name="colorPrimary">#7751DD</color>
     <color name="colorPrimaryDark">#7751DD</color>
     <color name="colorAccent">#03DAC5</color>
+    <color name="colorText">#18294D</color>
+    <color name="colorTextSecondary">#9EB0BC</color>
+    <color name="colorTextLogin">#FFFFFF</color>
+
+    <color name="secondaryBackground">#214966</color>
+    <color name="backgroundComponentColor">#F2F4F6</color>
+    <color name="backgroundButtonDisabled">#F2F4F6</color>
+    <color name="backgroundButton">@color/secondaryBackground</color>
+    <color name="backgroundButtonPressed">#CACED1</color>
+    <color name="headerTextColor">#FFF</color>
+    <color name="home_navigation_background">#214966</color>
+    <color name="home_navigation_item">#FFF</color>
+    <color name="linkTextColor">@color/colorText</color>
+    <color name="linkTextColorLogin">@color/colorText</color>
+    <color name="linkTextColorClicked">#E49C0C</color>
+    <color name="linkTextColorDisabled">#666</color>
 </resources>
