@@ -6,7 +6,17 @@
     </shared>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c84f19ad-16f1-4315-90c8-e9c06811f8fa" name="Default Changelist" comment="" />
+    <list default="true" id="c84f19ad-16f1-4315-90c8-e9c06811f8fa" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/navEditor.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/navEditor.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/brunocortez/android19mob/ui/dashboard/DashboardFragment.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/brunocortez/android19mob/ui/dashboard/DashboardViewModel.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/brunocortez/android19mob/ui/notifications/NotificationsFragment.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/brunocortez/android19mob/ui/notifications/NotificationsViewModel.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_dashboard.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_notifications.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/navigation/mobile_navigation.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/navigation/mobile_navigation.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -128,10 +138,14 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state x="100" y="123" width="1434" height="827" key="com.android.tools.idea.avdmanager.AvdListDialog" timestamp="1594419741445">
+    <state x="555" y="290" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1594474370657">
+      <screen x="0" y="23" width="1635" height="1027" />
+    </state>
+    <state x="555" y="290" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1635.1027/-406.-1417.2560.1417@0.23.1635.1027" timestamp="1594474370657" />
+    <state x="100" y="123" width="1434" height="827" key="com.android.tools.idea.avdmanager.AvdListDialog" timestamp="1594474401050">
       <screen x="0" y="23" width="1636" height="1027" />
     </state>
-    <state x="100" y="123" width="1434" height="827" key="com.android.tools.idea.avdmanager.AvdListDialog/0.23.1636.1027/-406.-1417.2560.1417@0.23.1636.1027" timestamp="1594419741445" />
+    <state x="100" y="123" width="1434" height="827" key="com.android.tools.idea.avdmanager.AvdListDialog/0.23.1636.1027/-406.-1417.2560.1417@0.23.1636.1027" timestamp="1594474401050" />
     <state width="437" height="107" key="javadoc.popup.new" timestamp="1594419734852">
       <screen x="0" y="23" width="1635" height="1027" />
     </state>
