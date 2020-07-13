@@ -1,17 +1,21 @@
+import dependencies.Modules
+import dependencies.Dependencies
+import dependencies.Versions
+
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion 29
-    buildToolsVersion '30.0.0'
+    compileSdkVersion Versions.compileSdk
+    buildToolsVersion Versions.buildTools
 
     defaultConfig {
-        applicationId "br.com.psyapp"
-        minSdkVersion 21
-        targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
+        applicationId Modules.App.applicationId
+        minSdkVersion Versions.minSdk
+        targetSdkVersion Versions.targetSdk
+        versionCode Modules.App.versionCode
+        versionName Modules.App.versionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
@@ -24,11 +28,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility Versions.jdkSource
+        targetCompatibility Versions.jdkTarget
     }
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = Versions.jdkTarget.toString()
     }
     dependenciesInfo {
         includeInApk false
@@ -38,30 +42,48 @@ android {
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation 'androidx.core:core-ktx:1.3.0'
-    implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'com.google.android.material:material:1.1.0'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    implementation 'androidx.navigation:navigation-fragment:2.3.0'
-    implementation 'androidx.navigation:navigation-ui:2.3.0'
-    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.0'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.3.0'
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
-    // material
-    implementation 'com.google.android.material:material:1.3.0-alpha01'
+    implementation Dependencies.Kotlin.standard
+    implementation Dependencies.Android.core
+    implementation Dependencies.Android.appcompat
+    implementation Dependencies.Android.constraintLayout
+    implementation Dependencies.Android.legacy
+    implementation Dependencies.LifeCycle.extensions
+    implementation Dependencies.LifeCycle.viewmodel
+
+    // Fragment Navigation libraries:
+    implementation Dependencies.Navigation.fragment
+    implementation Dependencies.Navigation.ui
+    androidTestImplementation Dependencies.Navigation.testing
+
+    // Material
+    implementation Dependencies.MaterialDesign.material
 
     // Firebase SDK for Google Analytics
-    implementation 'com.google.firebase:firebase-analytics:17.4.4'
+    implementation Dependencies.Firebase.analytics
 
     // Firebase SDK Auth
-    implementation 'com.google.firebase:firebase-auth:19.3.2'
+    implementation Dependencies.Firebase.auth
 
-    testImplementation 'junit:junit:4.13'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    // Koin dependency injection libraries:
+    implementation Dependencies.Koin.viewmodel
+    testImplementation Dependencies.Koin.test
+
+    // Retrofit API abstraction library:
+    implementation Dependencies.Retrofit.retrofit
+    implementation Dependencies.Retrofit.converterGson
+    testImplementation Dependencies.Retrofit.mockwebserver
+
+    // Picasso image downloading and cache library:
+    implementation Dependencies.Picasso.picasso
+
+    // Lottie animation library:
+    implementation Dependencies.Lottie.lottie
+
+    // Tests:
+    testImplementation Dependencies.Tests.junit
+    androidTestImplementation Dependencies.Tests.ext
+    androidTestImplementation Dependencies.Tests.espresso
 }
 
 apply plugin: 'com.google.gms.google-services'
