@@ -38,6 +38,8 @@ object Versions {
     // Firebase
     const val firebaseAnalytics = "17.4.4"
     const val firebaseAuth = "19.3.2"
+    const val firebaseCrashlyticsGradle = "2.2.0"
+    const val firebaseCrashlytics = "17.1.1"
     // Koin
     const val koin = "2.1.5"
     // Retrofit
@@ -86,6 +88,7 @@ object Dependencies {
     object Firebase {
         const val analytics = "com.google.firebase:firebase-analytics:${Versions.firebaseAnalytics}"
         const val auth = "com.google.firebase:firebase-auth:${Versions.firebaseAuth}"
+        const val crashlytics = "com.google.firebase:firebase-crashlytics:${Versions.firebaseCrashlytics}"
     }
 
     // Koin dependency injection libraries:
