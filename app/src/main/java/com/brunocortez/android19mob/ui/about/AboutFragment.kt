@@ -8,8 +8,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModel
 import com.brunocortez.android19mob.R
+import com.brunocortez.android19mob.ui.base.BaseFragment
 
-class AboutFragment : Fragment() {
+class AboutFragment : BaseFragment() {
 
     private val aboutViewModel by viewModels<AboutViewModel>()
 
