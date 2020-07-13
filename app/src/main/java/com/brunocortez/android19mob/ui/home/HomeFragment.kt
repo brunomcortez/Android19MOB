@@ -10,8 +10,9 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.brunocortez.android19mob.R
+import com.brunocortez.android19mob.ui.base.BaseFragment
 
-class HomeFragment : Fragment() {
+class HomeFragment : BaseFragment() {
 
    private val homeViewModel by viewModels<HomeViewModel>()
 

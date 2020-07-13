@@ -7,13 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import com.brunocortez.android19mob.R
+import com.brunocortez.android19mob.ui.base.BaseFragment
 
 /**
  * A simple [Fragment] subclass.
  * Use the [MapFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class MapFragment : Fragment() {
+class MapFragment : BaseFragment() {
 
     private val mapViewModel by viewModels<MapViewModel>()
 
