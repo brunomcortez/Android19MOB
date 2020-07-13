@@ -7,18 +7,18 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.brunocortez.android19mob.ui.home.HomeFragment"
+        android:name="br.com.psyapp.ui.home.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/navigation_map"
-        android:name="com.brunocortez.android19mob.ui.map.MapFragment"
+        android:name="br.com.psyapp.ui.map.MapFragment"
         android:label="fragment_map"
         tools:layout="@layout/fragment_map" />
     <fragment
         android:id="@+id/navigation_about"
-        android:name="com.brunocortez.android19mob.ui.about.AboutFragment"
+        android:name="br.com.psyapp.ui.about.AboutFragment"
         android:label="fragment_about"
         tools:layout="@layout/fragment_about" />
 </navigation>
