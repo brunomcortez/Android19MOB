@@ -1,5 +1,6 @@
 package br.com.psyapp.ui.login
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -10,6 +11,7 @@ import br.com.psyapp.exceptions.EmailInvalidException
 import br.com.psyapp.exceptions.PasswordInvalidException
 import br.com.psyapp.models.RequestState
 import br.com.psyapp.ui.extensions.showMessage
+import br.com.psyapp.ui.signup.SignupActivity
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity() {
@@ -58,7 +60,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun createAccountPressed() {
-
+        startActivity(Intent(this, SignupActivity::class.java))
     }
 
     private fun showSuccess() {
