@@ -5,18 +5,22 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import br.com.psyapp.R
 import br.com.psyapp.exceptions.EmailInvalidException
 import br.com.psyapp.exceptions.PasswordInvalidException
+import br.com.psyapp.extensions.isValidEmail
 import br.com.psyapp.models.RequestState
 import br.com.psyapp.ui.extensions.showMessage
+import com.google.firebase.auth.FirebaseAuth
 import br.com.psyapp.ui.signup.SignupActivity
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity() {
 
     private val loginViewModel by viewModels<LoginViewModel>()
+    val resetPasswordState = MutableLiveData<RequestState<String>>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,6 +29,26 @@ class LoginActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
+    }
+
+    fun resetPassword(email: String) {
+        resetPasswordState.value = RequestState.Loading
+        if(email.isValidEmail()) {
+            FirebaseAuth.getInstance().sendPasswordResetEmail(email)
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        resetPasswordState.value = RequestState.Success("Verifique sua caixa de e-mail")
+                    } else {
+                        resetPasswordState.value = RequestState.Error(
+                            Throwable(
+                                task.exception?.message ?: "Não foi possível realizar a requisição"
+                            )
+                        )
+                    }
+                }
+        } else {
+            resetPasswordState.value = RequestState.Error(EmailInvalidException())
+        }
     }
 
     private fun initView() {
