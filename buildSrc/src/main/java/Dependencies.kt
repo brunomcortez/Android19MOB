@@ -35,6 +35,8 @@ object Versions {
     const val googleServices = "4.3.3"
     // Material Design
     const val materialDesign = "1.1.0"
+    // Google
+    const val maps = "17.0.0"
     // Firebase
     const val firebaseAnalytics = "17.4.4"
     const val firebaseAuth = "19.3.2"
@@ -83,6 +85,10 @@ object Dependencies {
 
     object MaterialDesign {
         const val material = "com.google.android.material:material:${Versions.materialDesign}"
+    }
+
+    object Google {
+        const val maps = "com.google.android.gms:play-services-maps:${Versions.maps}"
     }
 
     object Firebase {

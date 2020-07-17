@@ -68,6 +68,9 @@ dependencies {
     // Firebase SDK Auth
     implementation Dependencies.Firebase.auth
 
+    // Google Maps
+    implementation Dependencies.Google.maps
+
     // Koin dependency injection libraries:
     implementation Dependencies.Koin.viewmodel
     testImplementation Dependencies.Koin.test
