@@ -20,7 +20,6 @@ import kotlinx.android.synthetic.main.activity_login.*
 class LoginActivity : AppCompatActivity() {
 
     private val loginViewModel by viewModels<LoginViewModel>()
-    val resetPasswordState = MutableLiveData<RequestState<String>>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,31 +30,27 @@ class LoginActivity : AppCompatActivity() {
     override fun onBackPressed() {
     }
 
-    fun resetPassword(email: String) {
-        resetPasswordState.value = RequestState.Loading
-        if(email.isValidEmail()) {
-            FirebaseAuth.getInstance().sendPasswordResetEmail(email)
-                .addOnCompleteListener { task ->
-                    if (task.isSuccessful) {
-                        resetPasswordState.value = RequestState.Success("Verifique sua caixa de e-mail")
-                    } else {
-                        resetPasswordState.value = RequestState.Error(
-                            Throwable(
-                                task.exception?.message ?: "Não foi possível realizar a requisição"
-                            )
-                        )
-                    }
-                }
-        } else {
-            resetPasswordState.value = RequestState.Error(EmailInvalidException())
-        }
-    }
+
 
     private fun initView() {
         btLogin?.setOnClickListener { loginPressed() }
         tvResetPassword?.setOnClickListener { resetPasswordPressed() }
         tvNewAccount?.setOnClickListener { createAccountPressed() }
 
+        loginViewModel.resetPasswordState.observe(this, Observer {
+            when(it) {
+                is RequestState.Success -> {
+                    hideLoading()
+                    showMessage(it.data)
+                }
+                is RequestState.Error -> {
+                    hideLoading()
+                    showError(it.throwable)
+                }
+
+                is RequestState.Loading -> showLoading()
+            }
+        })
         loginViewModel.loginState.observe(this, Observer {
             when (it) {
                 is RequestState.Loading -> {
@@ -80,7 +75,8 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun resetPasswordPressed() {
-
+        val email = etEmailLogin?.text?.toString() ?: ""
+        loginViewModel.resetPassword(email)
     }
 
     private fun createAccountPressed() {
