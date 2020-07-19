@@ -22,4 +22,6 @@
     <string name="label_name">Name</string>
     <string name="signup_subtitle">Fill in your account details</string>
     <string name="app_logo_description">App logo</string>
+    <string name="default_notification_channel_id">fcm_default_channel</string>
+
 </resources>

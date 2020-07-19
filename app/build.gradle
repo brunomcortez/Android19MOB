@@ -71,6 +71,9 @@ dependencies {
     // Firebase SDK Auth
     implementation Dependencies.Firebase.auth
 
+    // Firebase Cloud Messaging
+    implementation 'com.google.firebase:firebase-messaging:20.2.0'
+
     // Google Maps
     implementation Dependencies.Google.maps
 
