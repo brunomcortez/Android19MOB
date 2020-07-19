@@ -31,9 +31,39 @@ class MapFragment : BaseFragment(), OnMapReadyCallback {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
-//        mapFragment.getMapAsync(this)
-//        mv?.getMapAsync(this)
+//        val mapFragment = activity?.supportFragmentManager?.findFragmentById(R.id.mv) as? SupportMapFragment
+//        mapFragment?.getMapAsync(this)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        mv?.onCreate(savedInstanceState)
+        mv?.getMapAsync(this)
+    }
+
+    override fun onStart() {
+        super.onStart()
+        mv?.onStart()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        mv?.onResume()
+    }
+
+    override fun onPause() {
+        mv?.onPause()
+        super.onPause()
+    }
+
+    override fun onStop() {
+        mv?.onStop()
+        super.onStop()
+    }
+
+    override fun onLowMemory() {
+        mv?.onLowMemory()
+        super.onLowMemory()
     }
 
     override fun onCreateView(
@@ -44,53 +74,19 @@ class MapFragment : BaseFragment(), OnMapReadyCallback {
         return inflater.inflate(R.layout.fragment_map, container, false)
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        mv?.onCreate(savedInstanceState)
-        mv?.getMapAsync(this)
-    }
-
-    override fun onResume() {
-        super.onResume()
-        mv?.onResume()
-    }
-
-    override fun onStart() {
-        super.onStart()
-        mv?.onStart()
-    }
-
-    override fun onStop() {
-        mv?.onStop()
-        super.onStop()
-    }
-
-    override fun onPause() {
-        mv?.onPause()
-        super.onPause()
-    }
-
-    override fun onLowMemory() {
-        mv?.onLowMemory()
-        super.onLowMemory()
-    }
-
     override fun onMapReady(p0: GoogleMap?) {
         p0?.let { googleMap ->
             mMap = googleMap
             mMap.setMinZoomPreference(1f)
-
             val sydney = LatLng(-34.0, 151.0)
-
             mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
-            mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney, 16f))
         }
     }
 
     companion object {
         @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            MapFragment().apply {
+        fun newInstance() = MapFragment().apply {
                 arguments = Bundle().apply {
                 }
             }
