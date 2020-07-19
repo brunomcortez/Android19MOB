@@ -1,5 +1,6 @@
 package br.com.psyapp.ui.about
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -25,6 +26,16 @@ class AboutFragment : BaseFragment() {
 
     private fun setupView() {
         tvVersion?.text = getString(R.string.app_version_label, BuildConfig.VERSION_NAME)
+        btShare.setOnClickListener {
+            val sendIntent: Intent = Intent().apply {
+                action = Intent.ACTION_SEND
+                putExtra(Intent.EXTRA_TEXT, getString(R.string.website_link))
+                type = "text/plain"
+            }
+
+            val shareIntent = Intent.createChooser(sendIntent, null)
+            startActivity(shareIntent)
+        }
     }
 
     override fun onCreateView(

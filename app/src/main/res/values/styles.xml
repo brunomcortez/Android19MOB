@@ -85,4 +85,14 @@
         <item name="android:background">@drawable/button_selector</item>
     </style>
 
+    <style name="button_small">
+        <item name="android:layout_width">100dp</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textSize">@dimen/small_button_size</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:background">@drawable/button_selector_light</item>
+    </style>
+
 </resources>
