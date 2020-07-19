@@ -1,12 +1,15 @@
 package br.com.psyapp.ui.about
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import br.com.psyapp.BuildConfig
 import br.com.psyapp.R
 import br.com.psyapp.ui.base.BaseFragment
+import kotlinx.android.synthetic.main.fragment_about.*
 
 class AboutFragment : BaseFragment() {
 
@@ -14,6 +17,25 @@ class AboutFragment : BaseFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setupView()
+    }
+
+    private fun setupView() {
+        tvVersion?.text = getString(R.string.app_version_label, BuildConfig.VERSION_NAME)
+        btShare.setOnClickListener {
+            val sendIntent: Intent = Intent().apply {
+                action = Intent.ACTION_SEND
+                putExtra(Intent.EXTRA_TEXT, getString(R.string.website_link))
+                type = "text/plain"
+            }
+
+            val shareIntent = Intent.createChooser(sendIntent, null)
+            startActivity(shareIntent)
+        }
     }
 
     override fun onCreateView(
