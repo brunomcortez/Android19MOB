@@ -5,12 +5,15 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import br.com.psyapp.R
 import br.com.psyapp.exceptions.EmailInvalidException
 import br.com.psyapp.exceptions.PasswordInvalidException
+import br.com.psyapp.extensions.isValidEmail
 import br.com.psyapp.models.RequestState
 import br.com.psyapp.ui.extensions.showMessage
+import com.google.firebase.auth.FirebaseAuth
 import br.com.psyapp.ui.signup.SignupActivity
 import kotlinx.android.synthetic.main.activity_login.*
 
@@ -27,11 +30,27 @@ class LoginActivity : AppCompatActivity() {
     override fun onBackPressed() {
     }
 
+
+
     private fun initView() {
         btLogin?.setOnClickListener { loginPressed() }
         tvResetPassword?.setOnClickListener { resetPasswordPressed() }
         tvNewAccount?.setOnClickListener { createAccountPressed() }
 
+        loginViewModel.resetPasswordState.observe(this, Observer {
+            when(it) {
+                is RequestState.Success -> {
+                    hideLoading()
+                    showMessage(it.data)
+                }
+                is RequestState.Error -> {
+                    hideLoading()
+                    showError(it.throwable)
+                }
+
+                is RequestState.Loading -> showLoading()
+            }
+        })
         loginViewModel.loginState.observe(this, Observer {
             when (it) {
                 is RequestState.Loading -> {
@@ -56,7 +75,8 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun resetPasswordPressed() {
-
+        val email = etEmailLogin?.text?.toString() ?: ""
+        loginViewModel.resetPassword(email)
     }
 
     private fun createAccountPressed() {
