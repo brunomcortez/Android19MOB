@@ -37,11 +37,14 @@ object Versions {
     const val materialDesign = "1.1.0"
     // Recycler View
     const val recyclerView = "1.1.0"
+    // Google
+    const val maps = "17.0.0"
     // Firebase
     const val firebaseAnalytics = "17.4.4"
     const val firebaseAuth = "19.3.2"
     const val firebaseCrashlyticsGradle = "2.2.0"
     const val firebaseCrashlytics = "17.1.1"
+    const val firebaseFirestore = "21.4.3"
     // Koin
     const val koin = "2.1.5"
     // Retrofit
@@ -50,6 +53,8 @@ object Versions {
     const val okhttp = "4.7.2"
     // Picasso
     const val picasso = "2.71828"
+    // Canarinho
+    const val canarinho = "2.0.1"
     // Lottie
     const val lottie = "3.4.1"
     // RxJava2
@@ -96,10 +101,15 @@ object Dependencies {
         const val recycler = "androidx.recyclerview:recyclerview:${Versions.recyclerView}"
     }
 
+    object Google {
+        const val maps = "com.google.android.gms:play-services-maps:${Versions.maps}"
+    }
+
     object Firebase {
         const val analytics = "com.google.firebase:firebase-analytics:${Versions.firebaseAnalytics}"
         const val auth = "com.google.firebase:firebase-auth:${Versions.firebaseAuth}"
         const val crashlytics = "com.google.firebase:firebase-crashlytics:${Versions.firebaseCrashlytics}"
+        const val firestore = "com.google.firebase:firebase-firestore-ktx:${Versions.firebaseFirestore}"
     }
 
     // Koin dependency injection libraries:
@@ -119,6 +129,10 @@ object Dependencies {
     // Picasso image downloading and cache library:
     object Picasso {
         const val picasso = "com.squareup.picasso:picasso:${Versions.picasso}"
+    }
+
+    object Canarinho {
+        const val canarinho = "br.com.concrete:canarinho:${Versions.canarinho}"
     }
 
     // Lottie animation library:

@@ -68,8 +68,17 @@ dependencies {
     // Firebase SDK Crashlytics
     implementation Dependencies.Firebase.crashlytics
 
+    // Firebase SDK Firestore
+    implementation Dependencies.Firebase.firestore
+
     // Firebase SDK Auth
     implementation Dependencies.Firebase.auth
+
+    // Firebase Cloud Messaging
+    implementation 'com.google.firebase:firebase-messaging:20.2.0'
+
+    // Google Maps
+    implementation Dependencies.Google.maps
 
     // Koin dependency injection libraries:
     implementation Dependencies.Koin.viewmodel
@@ -82,6 +91,9 @@ dependencies {
 
     // Picasso image downloading and cache library:
     implementation Dependencies.Picasso.picasso
+
+    // Validator Canarinho
+    implementation Dependencies.Canarinho.canarinho
 
     // Lottie animation library:
     implementation Dependencies.Lottie.lottie

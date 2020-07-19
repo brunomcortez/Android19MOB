@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,4 +10,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:name="br.com.psyapp.lib.emotions.ui.emotions_map.EmotionsMapFragment"/>
-</LinearLayout>
+
+  <com.google.android.gms.maps.MapView
+        android:id="@+id/mv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</FrameLayout>

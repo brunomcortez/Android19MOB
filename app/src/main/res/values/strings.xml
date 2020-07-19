@@ -15,4 +15,20 @@
     <string name="label_create_account">Create Account</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="button_i_have_account">I have an account</string>
+    <string name="button_create_account">Create Account</string>
+    <string name="label_accept_terms">I have read and agree to the terms</string>
+    <string name="label_telephone">Telephone</string>
+    <string name="label_name">Name</string>
+    <string name="signup_subtitle">Fill in your account details</string>
+    <string name="app_logo_description">App logo</string>
+    <string name="app_version_label">Version: %1$s</string>
+    <string name="tv_bruno">Bruno Cortez</string>
+    <string name="tv_decio">Décio Montanhani</string>
+    <string name="tv_pedro">Pedro Xudre</string>
+    <string name="tv_vitor">Vitor Ferraz</string>
+    <string name="default_notification_channel_id">fcm_default_channel</string>
+    <string name="btShareText">Share</string>
+    <string name="website_link">Olá! Conheça o Psy App:\nhttps://psyapp.netlify.app/</string>
+
 </resources>
