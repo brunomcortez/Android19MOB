@@ -2,15 +2,22 @@ package br.com.psyapp
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
+import androidx.activity.viewModels
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import br.com.psyapp.models.RequestState
+import br.com.psyapp.ui.auth.BaseAuthViewModel
 import br.com.psyapp.ui.login.LoginActivity
+import kotlinx.android.synthetic.main.activity_login.*
 
 class MainActivity : AppCompatActivity() {
+    private val baseAuthViewModel: BaseAuthViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,6 +34,30 @@ class MainActivity : AppCompatActivity() {
         ))
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
-        startActivity(Intent(this, LoginActivity::class.java))
+        registerObserver()
+        baseAuthViewModel.isLoggedIn()
+    }
+
+    private fun registerObserver() {
+        baseAuthViewModel.loggedState.observe(this, Observer {
+            when (it) {
+                is RequestState.Loading -> showLoading()
+                is RequestState.Success -> {
+                    hideLoading()
+                }
+                is RequestState.Error -> {
+                    hideLoading()
+                    startActivity(Intent(this, LoginActivity::class.java))
+                }
+            }
+        })
+    }
+
+    private fun showLoading() {
+        pb?.visibility = View.VISIBLE
+    }
+
+    private fun hideLoading() {
+        pb?.visibility = View.GONE
     }
 }
