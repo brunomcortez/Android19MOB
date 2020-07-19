@@ -43,6 +43,9 @@ android {
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
 
+    // Psy App plugin dependency
+    implementation project(":libraries:emotions")
+
     implementation Dependencies.Kotlin.standard
     implementation Dependencies.Android.core
     implementation Dependencies.Android.appcompat

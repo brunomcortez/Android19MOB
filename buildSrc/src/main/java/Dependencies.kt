@@ -21,7 +21,7 @@ object Versions {
     const val minSdk = 21 // Android 5.0
     const val targetSdk = 29
     const val compileSdk = 29
-    const val buildGradle = "4.0.0"
+    const val buildGradle = "4.0.1"
     const val kotlin = "1.3.72"
     const val buildTools = "30.0.0"
     val jdkSource = JavaVersion.VERSION_1_8
@@ -35,6 +35,8 @@ object Versions {
     const val googleServices = "4.3.3"
     // Material Design
     const val materialDesign = "1.1.0"
+    // Recycler View
+    const val recyclerView = "1.1.0"
     // Firebase
     const val firebaseAnalytics = "17.4.4"
     const val firebaseAuth = "19.3.2"
@@ -50,6 +52,11 @@ object Versions {
     const val picasso = "2.71828"
     // Lottie
     const val lottie = "3.4.1"
+    // RxJava2
+    const val rxKotlin = "2.4.0"
+    const val rxAndroid = "2.1.1"
+    // Room
+    const val room = "2.2.5"
     // Junit
     const val junit = "4.13"
     const val junitExt = "1.1.1"
@@ -85,6 +92,10 @@ object Dependencies {
         const val material = "com.google.android.material:material:${Versions.materialDesign}"
     }
 
+    object RecyclerView {
+        const val recycler = "androidx.recyclerview:recyclerview:${Versions.recyclerView}"
+    }
+
     object Firebase {
         const val analytics = "com.google.firebase:firebase-analytics:${Versions.firebaseAnalytics}"
         const val auth = "com.google.firebase:firebase-auth:${Versions.firebaseAuth}"
@@ -93,6 +104,7 @@ object Dependencies {
 
     // Koin dependency injection libraries:
     object Koin {
+        const val android = "org.koin:koin-android:${Versions.koin}"
         const val viewmodel = "org.koin:koin-androidx-viewmodel:${Versions.koin}"
         const val test = "org.koin:koin-test:${Versions.koin}"
     }
@@ -112,6 +124,19 @@ object Dependencies {
     // Lottie animation library:
     object Lottie {
         const val lottie = "com.airbnb.android:lottie:${Versions.lottie}"
+    }
+
+    object RxJava2 {
+        const val kotlin = "io.reactivex.rxjava2:rxkotlin:${Versions.rxKotlin}"
+        const val android = "io.reactivex.rxjava2:rxandroid:${Versions.rxAndroid}"
+    }
+
+    object Room {
+        const val runtime = "androidx.room:room-runtime:${Versions.room}"
+        const val compiler = "androidx.room:room-compiler:${Versions.room}"
+        const val ktx = "androidx.room:room-ktx:${Versions.room}"
+        const val rxjava2 = "androidx.room:room-rxjava2:${Versions.room}"
+        const val testing = "androidx.room:room-testing:${Versions.room}"
     }
 
     object Tests {

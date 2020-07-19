@@ -5,6 +5,7 @@ import dependencies.Versions
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion Versions.compileSdk
@@ -34,6 +35,26 @@ dependencies {
     implementation Dependencies.Kotlin.standard
     implementation Dependencies.Android.core
     implementation Dependencies.Android.appcompat
+    implementation Dependencies.Android.legacy
+    implementation Dependencies.Android.constraintLayout
+
+    // Koin:
+    implementation Dependencies.Koin.android
+    implementation Dependencies.Koin.viewmodel
+
+    // RxJava2
+    implementation Dependencies.RxJava2.kotlin
+    implementation Dependencies.RxJava2.android
+
+    // Room:
+    implementation Dependencies.Room.runtime
+    kapt Dependencies.Room.compiler
+    implementation Dependencies.Room.ktx
+    implementation Dependencies.Room.rxjava2
+    testImplementation Dependencies.Room.testing
+
+    // Recycler View:
+    implementation Dependencies.RecyclerView.recycler
 
     // Tests:
     testImplementation Dependencies.Tests.junit
