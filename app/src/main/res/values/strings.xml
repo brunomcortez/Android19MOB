@@ -22,4 +22,9 @@
     <string name="label_name">Name</string>
     <string name="signup_subtitle">Fill in your account details</string>
     <string name="app_logo_description">App logo</string>
+    <string name="app_version_label">Version: %1$s</string>
+    <string name="tv_bruno">Bruno Cortez</string>
+    <string name="tv_decio">Décio Montanhani</string>
+    <string name="tv_pedro">Pedro Xudre</string>
+    <string name="tv_vitor">Vitor Ferraz</string>
 </resources>

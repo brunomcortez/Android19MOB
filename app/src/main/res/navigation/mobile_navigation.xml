@@ -14,11 +14,10 @@
     <fragment
         android:id="@+id/navigation_map"
         android:name="br.com.psyapp.ui.map.MapFragment"
-        android:label="fragment_map"
         tools:layout="@layout/fragment_map" />
     <fragment
         android:id="@+id/navigation_about"
         android:name="br.com.psyapp.ui.about.AboutFragment"
-        android:label="fragment_about"
+        android:label="@string/title_about"
         tools:layout="@layout/fragment_about" />
 </navigation>
