@@ -27,4 +27,6 @@
     <string name="tv_decio">Décio Montanhani</string>
     <string name="tv_pedro">Pedro Xudre</string>
     <string name="tv_vitor">Vitor Ferraz</string>
+    <string name="default_notification_channel_id">fcm_default_channel</string>
+
 </resources>
