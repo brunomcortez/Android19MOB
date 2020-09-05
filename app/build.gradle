@@ -77,6 +77,15 @@ dependencies {
     // Firebase Cloud Messaging
     implementation 'com.google.firebase:firebase-messaging:20.2.0'
 
+    // Firebase RemoteConfig
+//    implementation Dependencies.Firebase.remoteConfig
+    implementation ("com.google.firebase:firebase-config-ktx:19.2.0",{
+        // protobuf-lite that firebase-config and Tink depends on.
+        exclude group: 'com.google.protobuf',module: 'protobuf-javalite'
+        exclude group: 'com.google.protobuf',module: 'protobuf-lite'
+    })
+
+
     // Google Maps
     implementation Dependencies.Google.maps
 
@@ -102,6 +111,7 @@ dependencies {
     testImplementation Dependencies.Tests.junit
     androidTestImplementation Dependencies.Tests.ext
     androidTestImplementation Dependencies.Tests.espresso
+
 }
 
 apply plugin: 'com.google.gms.google-services'

@@ -1,5 +1,6 @@
 package br.com.psyapp
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -14,7 +15,12 @@ import androidx.navigation.ui.setupWithNavController
 import br.com.psyapp.models.RequestState
 import br.com.psyapp.ui.auth.BaseAuthViewModel
 import br.com.psyapp.ui.login.LoginActivity
+import br.com.psyapp.utils.featuretoogle.FeatureToggleHelper
+import br.com.psyapp.utils.featuretoogle.FeatureToggleListener
+import br.com.psyapp.utils.firebase.RemoteConfigUtils
 import kotlinx.android.synthetic.main.activity_login.*
+import kotlinx.android.synthetic.main.activity_login.pb
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
     private val baseAuthViewModel: BaseAuthViewModel by viewModels()
@@ -37,6 +43,20 @@ class MainActivity : AppCompatActivity() {
         navView.setupWithNavController(navController)
         registerObserver()
         baseAuthViewModel.isLoggedIn()
+
+        val tabBarItems = arrayListOf("HOME", "MAP", "PROFILE", "ABOUT")
+        val iterator = tabBarItems.iterator()
+        setupFeatureToggle(iterator, navView)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        when(requestCode) {
+            RESULT_LOGIN -> {
+                val view = nav_view?.findViewById<View>(R.id.navigation_home)
+                view?.performClick()
+            }
+        }
     }
 
     private fun registerObserver() {
@@ -60,5 +80,30 @@ class MainActivity : AppCompatActivity() {
 
     private fun hideLoading() {
         pb?.visibility = View.GONE
+    }
+
+    private fun setupFeatureToggle(
+        iterator: MutableIterator<String>,
+        navView: BottomNavigationView
+    ) {
+        RemoteConfigUtils.fetchAndActivate()
+            .addOnCompleteListener {
+                for ((index, itemMenu) in iterator.withIndex()) {
+                    FeatureToggleHelper().configureFeature(itemMenu,
+                        object : FeatureToggleListener {
+                            override fun onEnabled() {
+                                navView.menu.getItem(index).isVisible = true
+                            }
+
+                            override fun onInvisible() {
+                                navView.menu.getItem(index).isVisible = false
+                            }
+
+                            override fun onDisabled(clickListener: (Context) -> Unit) {
+
+                            }
+                        })
+                }
+            }
     }
 }

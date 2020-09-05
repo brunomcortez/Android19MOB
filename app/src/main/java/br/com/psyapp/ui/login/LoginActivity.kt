@@ -8,6 +8,7 @@ import androidx.activity.viewModels
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import br.com.psyapp.R
+import br.com.psyapp.RESULT_LOGIN
 import br.com.psyapp.exceptions.EmailInvalidException
 import br.com.psyapp.exceptions.PasswordInvalidException
 import br.com.psyapp.extensions.isValidEmail

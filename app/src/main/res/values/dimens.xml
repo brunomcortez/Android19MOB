@@ -7,4 +7,5 @@
     <dimen name="header_font_size">16sp</dimen>
     <dimen name="login_button_size">16sp</dimen>
     <dimen name="small_button_size">12sp</dimen>
+    <dimen name="profile_name">22sp</dimen>
 </resources>
