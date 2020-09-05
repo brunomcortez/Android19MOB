@@ -6,15 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import br.com.psyapp.MainActivity
 import br.com.psyapp.R
 import br.com.psyapp.ui.base.BaseFragment
-import br.com.psyapp.ui.extensions.showMessage
-import com.google.android.gms.common.GooglePlayServicesUtil
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
-import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import kotlinx.android.synthetic.main.fragment_map.*
@@ -78,9 +74,13 @@ class MapFragment : BaseFragment(), OnMapReadyCallback {
         p0?.let { googleMap ->
             mMap = googleMap
             mMap.setMinZoomPreference(1f)
-            val sydney = LatLng(-34.0, 151.0)
-            mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
-            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney, 16f))
+            val worker1 = LatLng(-23.564257, -46.652689)
+            mMap.addMarker(MarkerOptions().position(worker1).title("João da Silva - Psicólogo"))
+            val worker2 = LatLng(-23.569197, -46.651114)
+            mMap.addMarker(MarkerOptions().position(worker2).title("Everton Ribeiro - Psiquiatra"))
+            val worker3 = LatLng(-23.558836, -46.656790)
+            mMap.addMarker(MarkerOptions().position(worker3).title("Marcos Paulo - Coach"))
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(worker1, 15f))
         }
     }
 
