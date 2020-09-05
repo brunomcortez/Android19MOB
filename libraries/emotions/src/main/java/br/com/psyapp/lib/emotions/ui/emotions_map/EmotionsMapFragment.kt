@@ -2,21 +2,19 @@ package br.com.psyapp.lib.emotions.ui.emotions_map
 
 import android.os.Bundle
 import android.transition.TransitionManager
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import br.com.psyapp.lib.emotions.Emotions
 import br.com.psyapp.lib.emotions.R
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_emotions_map.*
 import org.koin.android.ext.android.inject
-import java.util.*
 
 class EmotionsMapFragment : Fragment() {
 
@@ -27,8 +25,10 @@ class EmotionsMapFragment : Fragment() {
 
     val invalidateTimer = Thread(Runnable {
         while (true) {
+            if (v_add == null) break
+
             v_add.post {
-                v_add.invalidate()
+                v_add?.invalidate()
             }
 
             Thread.sleep(13)
