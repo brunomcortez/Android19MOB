@@ -38,6 +38,31 @@ android {
         includeInApk false
         includeInBundle false
     }
+    flavorDimensions 'main'
+    productFlavors {
+        free {
+            dimension 'main'
+            applicationId 'br.com.psyapp'
+            versionCode 1
+            versionName '1.0'
+        }
+        pro {
+            dimension 'main'
+            versionCode 1
+            versionName '1.0'
+            applicationIdSuffix 'pro'
+        }
+    }
+    sourceSets {
+        pro {
+            res {
+                srcDirs 'src/pro/res', 'src/pro/res/'
+            }
+            java {
+                srcDirs 'src/pro/java', 'src/pro/java'
+            }
+        }
+    }
 }
 
 dependencies {

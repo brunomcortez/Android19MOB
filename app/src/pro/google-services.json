@@ -1,0 +1,56 @@
+{
+  "project_info": {
+    "project_number": "405626974955",
+    "firebase_url": "https://psy-app-918b0.firebaseio.com",
+    "project_id": "psy-app-918b0",
+    "storage_bucket": "psy-app-918b0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:405626974955:android:5a63e062d178f316dac4ae",
+        "android_client_info": {
+          "package_name": "br.com.psyapp.pro"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "405626974955-6jbdmcssllnlkv525i29oadtnu087ovu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.com.psyapp.pro",
+            "certificate_hash": "29802a44ccbb132334994c27ca143c700c9bb601"
+          }
+        },
+        {
+          "client_id": "405626974955-db9fim5m5iccqnb3n8h0iso5lr3dkr6f.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.com.psyapp.pro",
+            "certificate_hash": "70734b360e6eac9f7dc0a76353553e035c3aaa80"
+          }
+        },
+        {
+          "client_id": "405626974955-1i10c80f51rj0ubdbh2qp1s3s03m1t61.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDW5Q2apFeT8e5VvmnhyN1YNBruRKmnCto"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "405626974955-1i10c80f51rj0ubdbh2qp1s3s03m1t61.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
