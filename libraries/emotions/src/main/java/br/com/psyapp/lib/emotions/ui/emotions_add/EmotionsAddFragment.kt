@@ -5,12 +5,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.navArgs
+import br.com.psyapp.lib.emotions.Emotions
 import br.com.psyapp.lib.emotions.R
 import br.com.psyapp.lib.emotions.databinding.FragmentEmotionsAddBinding
+import br.com.psyapp.lib.emotions.persistence.Emotion
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 
 class EmotionsAddFragment : Fragment() {
 
     private lateinit var binding: FragmentEmotionsAddBinding
+    private val args: EmotionsAddFragmentArgs by navArgs()
+
+    private var emotion: Emotion? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -19,17 +27,23 @@ class EmotionsAddFragment : Fragment() {
         binding = FragmentEmotionsAddBinding.bind(it)
     }
 
-    private fun addEmotion() {
-//        val kind = et_kind.text.toString()
-//        val detail = et_detail.text.toString()
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-//        Emotions.getInstance().registerEmotion(kind, detail)
-//            .subscribeOn(Schedulers.io())
-//            .observeOn(AndroidSchedulers.mainThread())
-//            .subscribe {
-//
-//            }
-//            .dispose()
+        emotion = args.emotion
+    }
+
+    private fun saveEmotion() {
+        val kind = emotion?.kind ?: ""
+        val detail = emotion?.detail ?: ""
+
+        Emotions.I.registerEmotion(kind, detail)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe {
+
+            }
+            .dispose()
     }
 
     companion object {

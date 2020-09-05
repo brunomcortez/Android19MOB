@@ -5,15 +5,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.psyapp.lib.emotions.Emotions
 import br.com.psyapp.lib.emotions.R
 import br.com.psyapp.lib.emotions.databinding.FragmentEmotionsMapBinding
+import br.com.psyapp.lib.emotions.persistence.Emotion
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import org.koin.android.ext.android.inject
 
-class EmotionsMapFragment : Fragment() {
+class EmotionsMapFragment : Fragment(), EmotionsMapListener {
 
     private val emotionsMapAdapter: EmotionsMapAdapter by inject()
 
@@ -36,10 +38,10 @@ class EmotionsMapFragment : Fragment() {
 
     private fun configListeners() {
         binding.apply {
-
+            emotionsMapAdapter.listener = this@EmotionsMapFragment
 
             btnNew.setOnClickListener {
-
+                newEmotion()
             }
         }
     }
@@ -59,10 +61,25 @@ class EmotionsMapFragment : Fragment() {
                 emotionsMapAdapter.registers = it
 
                 emotionsMapAdapter.notifyDataSetChanged()
+
+                binding.tvEmpty.visibility = if (it.size > 0) View.GONE else View.VISIBLE
             }
     }
 
     private fun newEmotion() {
+        findNavController().navigate(R.id.addEmotion)
+    }
+
+    private fun editEmotion(emotion: Emotion) {
+        val action = EmotionsMapFragmentDirections.addEmotion(emotion)
+
+        findNavController().navigate(action)
+    }
+
+    override fun onAction(type: Int, position: Int) {
+        val emotion = emotionsMapAdapter.registers[position]
+
+        editEmotion(emotion)
     }
 
 }

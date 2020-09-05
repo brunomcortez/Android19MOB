@@ -24,7 +24,7 @@ class EmotionsMapAdapter : RecyclerView.Adapter<EmotionsMapAdapter.ViewHolder>()
                 tvRegistered.text = emotion.registered.toString()
 
                 root.setOnClickListener {
-                    listener?.onAction(0)
+                    listener?.onAction(0, position)
                 }
             }
         }
