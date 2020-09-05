@@ -3,7 +3,7 @@ package br.com.psyapp.lib.emotions.persistence
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import androidx.room.TypeConverters
+import java.io.Serializable
 import java.util.*
 
 @Entity(tableName = "emotions")
@@ -17,4 +17,4 @@ data class Emotion(
     @PrimaryKey(autoGenerate = false)
     @ColumnInfo(name = "emotion_id")
     val id: String = UUID.randomUUID().toString()
-)
+) : Serializable

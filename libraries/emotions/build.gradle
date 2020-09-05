@@ -21,6 +21,15 @@ android {
         consumerProguardFiles "consumer-rules.pro"
     }
 
+    compileOptions {
+        sourceCompatibility Versions.jdkSource
+        targetCompatibility Versions.jdkTarget
+    }
+
+    kotlinOptions {
+        jvmTarget = Versions.jdkTarget.toString()
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -73,3 +82,5 @@ dependencies {
     androidTestImplementation Dependencies.Tests.ext
     androidTestImplementation Dependencies.Tests.espresso
 }
+
+apply plugin: "androidx.navigation.safeargs.kotlin"

@@ -9,5 +9,20 @@
         android:id="@+id/emotionsMapFragment"
         android:name="br.com.psyapp.lib.emotions.ui.emotions_map.EmotionsMapFragment"
         android:label="fragment_emotions_map"
-        tools:layout="@layout/fragment_emotions_map" />
+        tools:layout="@layout/fragment_emotions_map" >
+        <action
+            android:id="@+id/addEmotion"
+            app:destination="@id/emotionsAddFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/emotionsAddFragment"
+        android:name="br.com.psyapp.lib.emotions.ui.emotions_add.EmotionsAddFragment"
+        android:label="fragment_emotions_add"
+        tools:layout="@layout/fragment_emotions_add" >
+        <argument
+            android:name="emotion"
+            app:argType="br.com.psyapp.lib.emotions.persistence.Emotion"
+            app:nullable="true"
+            android:defaultValue="@null" />
+    </fragment>
 </navigation>
