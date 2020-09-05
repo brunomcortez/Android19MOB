@@ -9,6 +9,7 @@ import br.com.psyapp.models.NewUser
 import br.com.psyapp.models.RequestState
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.auth.UserProfileChangeRequest
 import com.google.firebase.firestore.FirebaseFirestore
 
 class SignupViewModel: ViewModel() {
@@ -27,6 +28,8 @@ class SignupViewModel: ViewModel() {
                 newUser.password ?: ""
             )
                 .addOnCompleteListener { task ->
+                    updateUserProfile(newUser)
+
                     if (task.isSuccessful) {
                         saveInFirestore(newUser)
                     } else {
@@ -38,6 +41,13 @@ class SignupViewModel: ViewModel() {
                     }
                 }
         }
+    }
+
+    private fun updateUserProfile(newUser: NewUser) {
+        val userProfileChangeRequest = UserProfileChangeRequest.Builder()
+            .setDisplayName(newUser.username)
+            .build()
+        mAuth.currentUser?.updateProfile(userProfileChangeRequest)
     }
 
     private fun saveInFirestore(newUser: NewUser) {
