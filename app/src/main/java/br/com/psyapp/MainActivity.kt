@@ -1,5 +1,6 @@
 package br.com.psyapp
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -15,6 +16,7 @@ import br.com.psyapp.models.RequestState
 import br.com.psyapp.ui.auth.BaseAuthViewModel
 import br.com.psyapp.ui.login.LoginActivity
 import br.com.psyapp.utils.featuretoogle.FeatureToggleHelper
+import br.com.psyapp.utils.featuretoogle.FeatureToggleListener
 import br.com.psyapp.utils.firebase.RemoteConfigUtils
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_login.pb
@@ -41,6 +43,10 @@ class MainActivity : AppCompatActivity() {
         navView.setupWithNavController(navController)
         registerObserver()
         baseAuthViewModel.isLoggedIn()
+
+        val tabBarItems = arrayListOf("HOME", "MAP", "PROFILE", "ABOUT")
+        val iterator = tabBarItems.iterator()
+        setupFeatureToggle(iterator, navView)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -74,5 +80,27 @@ class MainActivity : AppCompatActivity() {
 
     private fun hideLoading() {
         pb?.visibility = View.GONE
+    }
+
+    private fun setupFeatureToggle(
+        iterator: MutableIterator<String>,
+        navView: BottomNavigationView
+    ) {
+        for ((index, itemMenu) in iterator.withIndex()) {
+            FeatureToggleHelper().configureFeature(itemMenu,
+                object : FeatureToggleListener {
+                    override fun onEnabled() {
+//                        navView.getMenu().findItem(index).setVisible(true);
+                    }
+
+                    override fun onInvisible() {
+//                        navView.getMenu().findItem(index).setVisible(false);
+                    }
+
+                    override fun onDisabled(clickListener: (Context) -> Unit) {
+
+                    }
+                })
+        }
     }
 }
