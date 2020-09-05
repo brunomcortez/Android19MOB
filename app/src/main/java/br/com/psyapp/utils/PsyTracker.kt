@@ -7,6 +7,6 @@ import com.google.firebase.analytics.FirebaseAnalytics
 object PsyTracker {
     fun trackEvent(activity: Activity, bundle: Bundle) {
         val mFirebaseAnalytics = FirebaseAnalytics.getInstance(activity)
-        mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
+        mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_ITEM, bundle);
     }
 }
