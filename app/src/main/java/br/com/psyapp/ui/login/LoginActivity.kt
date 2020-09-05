@@ -1,5 +1,6 @@
 package br.com.psyapp.ui.login
 
+import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -7,8 +8,7 @@ import android.view.View
 import androidx.activity.viewModels
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
-import br.com.psyapp.R
-import br.com.psyapp.RESULT_LOGIN
+import br.com.psyapp.*
 import br.com.psyapp.exceptions.EmailInvalidException
 import br.com.psyapp.exceptions.PasswordInvalidException
 import br.com.psyapp.extensions.isValidEmail
@@ -31,7 +31,18 @@ class LoginActivity : AppCompatActivity() {
     override fun onBackPressed() {
     }
 
-
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        when(requestCode) {
+            RESULT_SIGNUP -> {
+                if (resultCode == Activity.RESULT_OK) {
+                    val email = data?.extras?.getString(KEY_EMAIL) ?: ""
+                    val password = data?.extras?.getString(KEY_PASSWORD) ?: ""
+                    loginViewModel.signIn(email, password)
+                }
+            }
+        }
+    }
 
     private fun initView() {
         btLogin?.setOnClickListener { loginPressed() }
@@ -81,7 +92,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun createAccountPressed() {
-        startActivity(Intent(this, SignupActivity::class.java))
+        startActivityForResult(Intent(this, SignupActivity::class.java), RESULT_SIGNUP)
     }
 
     private fun showSuccess() {

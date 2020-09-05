@@ -1,5 +1,7 @@
 package br.com.psyapp.ui.signup
 
+import android.app.Activity
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -7,6 +9,8 @@ import androidx.activity.viewModels
 import androidx.lifecycle.Observer
 import br.com.concrete.canarinho.watcher.TelefoneTextWatcher
 import br.com.concrete.canarinho.watcher.evento.EventoDeValidacao
+import br.com.psyapp.KEY_EMAIL
+import br.com.psyapp.KEY_PASSWORD
 import br.com.psyapp.R
 import br.com.psyapp.models.NewUser
 import br.com.psyapp.models.RequestState
@@ -32,6 +36,12 @@ class SignupActivity : AppCompatActivity() {
                 is RequestState.Success -> {
                     hideLoading()
                     showMessage("Usuário criado com sucesso")
+                    val intent = Intent()
+                    val bundle = Bundle()
+                    bundle.putString(KEY_EMAIL, etEmailSignUp.text.toString())
+                    bundle.putString(KEY_PASSWORD, etPasswordSignUp.text.toString())
+                    intent.putExtras(bundle)
+                    setResult(Activity.RESULT_OK, intent)
                     finish()
                 }
                 is RequestState.Error -> {
