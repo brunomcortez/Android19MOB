@@ -45,6 +45,8 @@ object Versions {
     const val firebaseCrashlyticsGradle = "2.2.0"
     const val firebaseCrashlytics = "17.1.1"
     const val firebaseFirestore = "21.4.3"
+    const val firebaseRemoteConfig = "19.2.0"
+
     // Koin
     const val koin = "2.1.5"
     // Retrofit
@@ -110,6 +112,7 @@ object Dependencies {
         const val auth = "com.google.firebase:firebase-auth:${Versions.firebaseAuth}"
         const val crashlytics = "com.google.firebase:firebase-crashlytics:${Versions.firebaseCrashlytics}"
         const val firestore = "com.google.firebase:firebase-firestore-ktx:${Versions.firebaseFirestore}"
+        const val remoteConfig = "com.google.firebase:firebase-config-ktx:${Versions.firebaseRemoteConfig}"
     }
 
     // Koin dependency injection libraries:
