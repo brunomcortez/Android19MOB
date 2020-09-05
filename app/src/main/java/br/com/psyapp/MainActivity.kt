@@ -15,6 +15,8 @@ import br.com.psyapp.models.RequestState
 import br.com.psyapp.ui.auth.BaseAuthViewModel
 import br.com.psyapp.ui.login.LoginActivity
 import kotlinx.android.synthetic.main.activity_login.*
+import kotlinx.android.synthetic.main.activity_login.pb
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
     private val baseAuthViewModel: BaseAuthViewModel by viewModels()
@@ -37,6 +39,16 @@ class MainActivity : AppCompatActivity() {
         navView.setupWithNavController(navController)
         registerObserver()
         baseAuthViewModel.isLoggedIn()
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        when(requestCode) {
+            RESULT_LOGIN -> {
+                val view = nav_view?.findViewById<View>(R.id.navigation_home)
+                view?.performClick()
+            }
+        }
     }
 
     private fun registerObserver() {
