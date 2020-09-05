@@ -14,6 +14,8 @@ import androidx.navigation.ui.setupWithNavController
 import br.com.psyapp.models.RequestState
 import br.com.psyapp.ui.auth.BaseAuthViewModel
 import br.com.psyapp.ui.login.LoginActivity
+import br.com.psyapp.utils.featuretoogle.FeatureToggleHelper
+import br.com.psyapp.utils.firebase.RemoteConfigUtils
 import kotlinx.android.synthetic.main.activity_login.*
 
 class MainActivity : AppCompatActivity() {

@@ -102,6 +102,10 @@ dependencies {
     testImplementation Dependencies.Tests.junit
     androidTestImplementation Dependencies.Tests.ext
     androidTestImplementation Dependencies.Tests.espresso
+
+    // Remote Config:
+    implementation 'com.google.firebase:firebase-config-ktx:19.2.0'
+    implementation 'com.google.firebase:firebase-analytics-ktx:17.5.0'
 }
 
 apply plugin: 'com.google.gms.google-services'
