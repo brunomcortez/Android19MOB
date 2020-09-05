@@ -34,7 +34,7 @@ object Versions {
     // Google Services
     const val googleServices = "4.3.3"
     // Material Design
-    const val materialDesign = "1.1.0"
+    const val materialDesign = "1.2.1"
     // Recycler View
     const val recyclerView = "1.1.0"
     // Google
@@ -77,7 +77,7 @@ object Dependencies {
     object Android {
         const val core = "androidx.core:core-ktx:1.3.0"
         const val appcompat = "androidx.appcompat:appcompat:1.1.0"
-        const val constraintLayout = "androidx.constraintlayout:constraintlayout:1.1.3"
+        const val constraintLayout = "androidx.constraintlayout:constraintlayout:2.0.1"
         const val legacy = "androidx.legacy:legacy-support-v4:1.0.0"
     }
 
