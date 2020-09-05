@@ -7,6 +7,7 @@ import android.view.View
 import androidx.activity.viewModels
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.os.bundleOf
 import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -15,6 +16,8 @@ import androidx.navigation.ui.setupWithNavController
 import br.com.psyapp.models.RequestState
 import br.com.psyapp.ui.auth.BaseAuthViewModel
 import br.com.psyapp.ui.login.LoginActivity
+import br.com.psyapp.utils.PsyTracker
+import br.com.psyapp.utils.PsyTracker.trackEvent
 import br.com.psyapp.utils.featuretoogle.FeatureToggleHelper
 import br.com.psyapp.utils.featuretoogle.FeatureToggleListener
 import br.com.psyapp.utils.firebase.RemoteConfigUtils
@@ -29,7 +32,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
-
+        navView.setOnNavigationItemSelectedListener {
+            PsyTracker.trackEvent(this,
+                bundleOf("feature" to it.title)
+            )
+            true
+        }
         val navController = findNavController(R.id.nav_host_fragment)
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
