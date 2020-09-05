@@ -27,6 +27,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
@@ -55,6 +59,14 @@ dependencies {
 
     // Recycler View:
     implementation Dependencies.RecyclerView.recycler
+
+    // Navigation:
+    implementation Dependencies.Navigation.fragment
+    implementation Dependencies.Navigation.ui
+    testImplementation Dependencies.Navigation.testing
+
+    // Material
+    implementation Dependencies.MaterialDesign.material
 
     // Tests:
     testImplementation Dependencies.Tests.junit

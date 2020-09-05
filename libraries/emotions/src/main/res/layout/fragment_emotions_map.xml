@@ -1,85 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.emotions_map.EmotionsMapFragment">
+    android:layout_height="match_parent">
 
-    <FrameLayout
-        android:id="@+id/frameLayout"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:tag="blurred"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        tools:context=".ui.emotions_map.EmotionsMapFragment">
 
-        <LinearLayout
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_background"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:scaleType="centerCrop"
+            android:src="@drawable/fake_background"
+            android:tint="#A87B1FA2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_emotions"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                tools:itemCount="5"
-                tools:listitem="@layout/list_item_emotion" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_emotions"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:itemCount="6"
+            tools:listitem="@layout/list_item_emotion" />
 
-            <Button
-                android:id="@+id/btn_new"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom|center"
-                android:text="Novo Registro" />
-        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </FrameLayout>
-
-    <br.com.psyapp.lib.emotions.ui.base.FrameGlass
-        android:id="@+id/v_add"
-        android:layout_width="0dp"
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_new"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="20dp"
-        android:padding="24dp"
-        app:layout_constraintBottom_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <EditText
-                android:id="@+id/et_kind"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Emoção" />
-
-            <EditText
-                android:id="@+id/et_detail"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Detalhes..." />
-
-            <Button
-                android:id="@+id/btn_add"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Registrar" />
-
-            <Button
-                android:id="@+id/btn_cancel"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Cancelar" />
-        </LinearLayout>
-
-    </br.com.psyapp.lib.emotions.ui.base.FrameGlass>
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_gravity="end|bottom"
+        android:layout_margin="16dp"
+        app:srcCompat="@drawable/ic_plus" />
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

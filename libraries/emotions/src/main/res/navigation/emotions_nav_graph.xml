@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/emotions_nav_graph"
+    app:startDestination="@id/emotionsMapFragment">
+
+    <fragment
+        android:id="@+id/emotionsMapFragment"
+        android:name="br.com.psyapp.lib.emotions.ui.emotions_map.EmotionsMapFragment"
+        android:label="fragment_emotions_map"
+        tools:layout="@layout/fragment_emotions_map" />
+</navigation>

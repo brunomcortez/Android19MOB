@@ -3,24 +3,30 @@ package br.com.psyapp.lib.emotions.ui.emotions_map
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import br.com.psyapp.lib.emotions.R
+import br.com.psyapp.lib.emotions.databinding.ListItemEmotionBinding
 import br.com.psyapp.lib.emotions.persistence.Emotion
 
 class EmotionsMapAdapter : RecyclerView.Adapter<EmotionsMapAdapter.ViewHolder>() {
 
     var registers: List<Emotion> = listOf()
+    var listener: EmotionsMapListener? = null
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        private val kind = view.findViewById<TextView>(R.id.tv_kind)
-        private val registered = view.findViewById<TextView>(R.id.tv_registered)
+        private val binding = ListItemEmotionBinding.bind(view)
 
         fun onBind(position: Int) {
             val emotion = registers[position]
 
-            kind.text = emotion.kind
-            registered.text = emotion.registered.toString()
+            binding.apply {
+                tvKind.text = emotion.kind
+                tvRegistered.text = emotion.registered.toString()
+
+                root.setOnClickListener {
+                    listener?.onAction(0)
+                }
+            }
         }
     }
 

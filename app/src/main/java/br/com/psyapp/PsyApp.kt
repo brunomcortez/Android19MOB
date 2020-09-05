@@ -17,7 +17,7 @@ class PsyApp : Application() {
             modules(listOf())
         }
 
-        Emotions.getInstance().init()
+        Emotions.setup()
     }
 
 }

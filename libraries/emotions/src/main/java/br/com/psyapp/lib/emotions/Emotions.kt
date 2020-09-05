@@ -16,8 +16,6 @@ class Emotions : KoinComponent {
 
     private val database: EmotionsDatabase by inject()
 
-    fun init() = loadKoinModules(listOf(dataSourceModule, adaptersModule))
-
     fun listEmotions(): Observable<List<Emotion>> = database.emotionDao().getEmotions()
 
     fun listEmotionsFromWeek(): Flowable<Emotion> {
@@ -27,11 +25,13 @@ class Emotions : KoinComponent {
         weekFirstDay.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY)
         weekLastDay.set(Calendar.DAY_OF_WEEK, Calendar.SUNDAY)
 
-        return database.emotionDao().getEmotionByRegisterBetween(weekFirstDay.time, weekLastDay.time)
+        return database.emotionDao()
+            .getEmotionByRegisterBetween(weekFirstDay.time, weekLastDay.time)
     }
 
     fun registerEmotion(kind: String, detail: String?, date: Date? = null): Completable {
-        val registered = if (date != null) java.sql.Date(date.time) else java.sql.Date(Calendar.getInstance().timeInMillis)
+        val registered =
+            if (date != null) java.sql.Date(date.time) else java.sql.Date(Calendar.getInstance().timeInMillis)
         val emotion = Emotion(kind, detail, registered)
 
         return database.emotionDao().insertEmotion(emotion)
@@ -46,8 +46,16 @@ class Emotions : KoinComponent {
     }
 
     companion object {
-        @Volatile private var INSTANCE: Emotions? = null
+        @Volatile
+        private var INSTANCE: Emotions? = null
 
+        val I: Emotions
+            get() = getInstance()
+
+        @JvmStatic
+        fun setup() = loadKoinModules(listOf(dataSourceModule, adaptersModule))
+
+        @JvmStatic
         fun getInstance() = INSTANCE ?: Emotions().also { INSTANCE = it }
     }
 }
