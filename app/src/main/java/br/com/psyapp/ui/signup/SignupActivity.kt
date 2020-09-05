@@ -32,7 +32,7 @@ class SignupActivity : AppCompatActivity() {
                 is RequestState.Success -> {
                     hideLoading()
                     showMessage("Usuário criado com sucesso")
-                    // TODO: - Definir o que fazer após criar o usuário.
+                    finish()
                 }
                 is RequestState.Error -> {
                     hideLoading()
