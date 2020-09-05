@@ -32,5 +32,7 @@
     <string name="btShareText">Share</string>
     <string name="btLogoutText">Logout</string>
     <string name="website_link">Olá! Conheça o Psy App:\nhttps://psyapp.netlify.app/</string>
+    <string name="user_id">Id: </string>
+    <string name="user_email">Email: </string>
 
 </resources>

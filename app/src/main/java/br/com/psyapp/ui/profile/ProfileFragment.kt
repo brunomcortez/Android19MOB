@@ -37,6 +37,7 @@ class ProfileFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         btLogout?.setOnClickListener { logoutPressed() }
+        updateProfile()
     }
 
     companion object {
@@ -47,6 +48,12 @@ class ProfileFragment : BaseFragment() {
 
                 }
             }
+    }
+
+    private fun updateProfile() {
+        tvName?.text = profileViewModel.getProfileName()
+        tvId?.text = profileViewModel.getUid()
+        tvEmail?.text = profileViewModel.getEmail()
     }
 
     private fun logoutPressed() {
