@@ -39,6 +39,7 @@ class MainActivity : AppCompatActivity() {
             R.id.navigation_profile,
             R.id.navigation_about
         ))
+
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
         registerObserver()
@@ -86,21 +87,24 @@ class MainActivity : AppCompatActivity() {
         iterator: MutableIterator<String>,
         navView: BottomNavigationView
     ) {
-        for ((index, itemMenu) in iterator.withIndex()) {
-            FeatureToggleHelper().configureFeature(itemMenu,
-                object : FeatureToggleListener {
-                    override fun onEnabled() {
-//                        navView.getMenu().findItem(index).setVisible(true);
-                    }
+        RemoteConfigUtils.fetchAndActivate()
+            .addOnCompleteListener {
+                for ((index, itemMenu) in iterator.withIndex()) {
+                    FeatureToggleHelper().configureFeature(itemMenu,
+                        object : FeatureToggleListener {
+                            override fun onEnabled() {
+                                navView.menu.getItem(index).isVisible = true
+                            }
 
-                    override fun onInvisible() {
-//                        navView.getMenu().findItem(index).setVisible(false);
-                    }
+                            override fun onInvisible() {
+                                navView.menu.getItem(index).isVisible = false
+                            }
 
-                    override fun onDisabled(clickListener: (Context) -> Unit) {
+                            override fun onDisabled(clickListener: (Context) -> Unit) {
 
-                    }
-                })
-        }
+                            }
+                        })
+                }
+            }
     }
 }
