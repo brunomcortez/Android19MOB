@@ -1,11 +1,11 @@
 <resources>
     <string name="app_name">Psy</string>
-    <string name="title_home">Home</string>
+    <string name="title_home">Diary</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="title_login">Login</string>
     <string name="title_signup">Signup</string>
-    <string name="title_map">Map</string>
+    <string name="title_map">Search</string>
     <string name="title_profile">Profile</string>
     <string name="title_about">About</string>
     <string name="label_email">Email</string>
@@ -14,8 +14,6 @@
     <string name="login_subtitle">Subtitle</string>
     <string name="label_reset_password">Reset Password</string>
     <string name="label_create_account">Create Account</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="button_i_have_account">I have an account</string>
     <string name="button_create_account">Create Account</string>
     <string name="label_accept_terms">I have read and agree to the terms</string>
@@ -34,5 +32,4 @@
     <string name="website_link">Olá! Conheça o Psy App:\nhttps://psyapp.netlify.app/</string>
     <string name="user_id">Id: </string>
     <string name="user_email">Email: </string>
-
 </resources>

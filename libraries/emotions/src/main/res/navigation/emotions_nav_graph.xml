@@ -12,7 +12,9 @@
         tools:layout="@layout/fragment_emotions_map" >
         <action
             android:id="@+id/addEmotion"
-            app:destination="@id/emotionsAddFragment" />
+            app:destination="@id/emotionsAddFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/emotionsAddFragment"
