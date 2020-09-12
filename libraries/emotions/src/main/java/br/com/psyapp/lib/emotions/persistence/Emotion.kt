@@ -9,9 +9,9 @@ import java.util.*
 @Entity(tableName = "emotions")
 data class Emotion(
     @ColumnInfo(name = "emotion_kind")
-    val kind: String,
+    var kind: String,
     @ColumnInfo(name = "emotion_detail")
-    val detail: String?,
+    var detail: String?,
     @ColumnInfo(name = "emotion_registered")
     val registered: Date,
     @PrimaryKey(autoGenerate = false)

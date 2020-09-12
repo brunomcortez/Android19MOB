@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -23,6 +24,7 @@ class EmotionsAddFragment : Fragment() {
 
     private var emotion: Emotion? = null
     private lateinit var optionsAdapter: EmotionsOptionsAdapter
+    private var selectedOption: EmotionOption? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,9 +36,11 @@ class EmotionsAddFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        configAdapters()
-
         emotion = args.emotion
+
+        configAdapters()
+        configListeners()
+        configContent()
     }
 
     private fun configAdapters() {
@@ -60,25 +64,75 @@ class EmotionsAddFragment : Fragment() {
         }
     }
 
-    private fun onSelectEmotion(type: EmotionsOptionsAdapter.ActionType, emotion: EmotionOption) {
+    private fun configListeners() {
+        binding.apply {
+            btnRegister.setOnClickListener {
+                saveEmotion()
+            }
+        }
+    }
 
+    private fun configContent() {
+        emotion?.let { emotion ->
+            binding.apply {
+                optionsAdapter.options.forEach {
+                    it.selected = it.name == emotion.kind
+                }
+                optionsAdapter.notifyDataSetChanged()
+
+                etDescription.setText(emotion.detail)
+
+                btnRegister.isEnabled = true
+            }
+        }
+    }
+
+    private fun onSelectEmotion(type: EmotionsOptionsAdapter.ActionType, option: EmotionOption) {
+        optionsAdapter.options.forEach {
+            it.selected = it.name == option.name
+        }
+
+        optionsAdapter.notifyDataSetChanged()
+
+        selectedOption = option
+
+        binding.btnRegister.isEnabled = true
     }
 
     private fun saveEmotion() {
-        val kind = emotion?.kind ?: ""
-        val detail = emotion?.detail ?: ""
+        selectedOption?.let { selectedOption ->
+            val detail = binding.etDescription.text.toString()
 
-        Emotions.I.registerEmotion(kind, detail)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe {
+            if (emotion == null) {
+                val kind = selectedOption.name
 
+                Emotions.I.registerEmotion(kind, if (detail.isNotBlank()) detail else null)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe {
+                        goBack()
+                    }
+            } else {
+                emotion?.let { emotion ->
+                    emotion.kind = selectedOption.name
+                    emotion.detail = if (detail.isNotBlank()) detail else null
+
+                    Emotions.I.alterEmotion(emotion)
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe {
+                            goBack()
+                        }
+                }
             }
-            .dispose()
+        }
+    }
+
+    private fun goBack() {
+        findNavController().popBackStack()
     }
 
     companion object {
-
         @JvmStatic
         fun newInstance() = EmotionsAddFragment()
     }

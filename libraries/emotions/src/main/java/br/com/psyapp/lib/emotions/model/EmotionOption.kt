@@ -4,5 +4,6 @@ import androidx.annotation.DrawableRes
 
 class EmotionOption(
     @DrawableRes val icon: Int,
-    val name: String
+    val name: String,
+    var selected: Boolean = false
 )

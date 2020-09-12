@@ -10,7 +10,7 @@ import br.com.psyapp.lib.emotions.databinding.ListItemEmotionOptionBinding
 import br.com.psyapp.lib.emotions.model.EmotionOption
 
 class EmotionsOptionsAdapter(
-    private val options: ArrayList<EmotionOption>,
+    val options: ArrayList<EmotionOption>,
     private val onAction: (type: ActionType, emotion: EmotionOption) -> Unit
 ) : RecyclerView.Adapter<EmotionsOptionsAdapter.ViewHolder>() {
 
@@ -33,6 +33,8 @@ class EmotionsOptionsAdapter(
                 root.setOnClickListener {
                     onAction.invoke(ActionType.TOUCH, option)
                 }
+
+                root.alpha = if (option.selected) 1f else .6f
             }
         }
     }
