@@ -19,6 +19,7 @@ import br.com.psyapp.utils.featuretoogle.FeatureToggleHelper
 import br.com.psyapp.utils.featuretoogle.FeatureToggleListener
 import br.com.psyapp.utils.firebase.RemoteConfigUtils
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.analytics.FirebaseAnalytics
 import kotlinx.android.synthetic.main.activity_login.pb
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -39,15 +40,6 @@ class MainActivity : AppCompatActivity() {
         val iterator = tabBarItems.iterator()
 
         navView.apply {
-            setOnNavigationItemSelectedListener {
-                PsyTracker.trackEvent(
-                    this@MainActivity,
-                    bundleOf("feature" to it.title)
-                )
-
-                true
-            }
-
             setupWithNavController(navController)
         }
 
