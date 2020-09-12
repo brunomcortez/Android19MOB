@@ -80,7 +80,6 @@ class EmotionsAddFragment : Fragment() {
 
                         it.selected = true
                     } else {
-
                         it.selected = false
                     }
                 }
