@@ -29,13 +29,13 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:itemCount="6"
-            tools:listitem="@layout/list_item_emotion" />
+            tools:listitem="@layout/list_item_emotion_register" />
 
         <TextView
             android:id="@+id/tv_empty"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nenhuma emoção cadastrada"
+            android:text="@string/emotion_list_empty"
             android:textColor="#fff"
             android:textSize="18sp"
             android:visibility="gone"

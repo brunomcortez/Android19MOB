@@ -1,7 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="emotion_list_empty">No emotion registered yet</string>
+    <string name="emotion_very_sad">Very sad</string>
+    <string name="emotion_sad">Sad</string>
+    <string name="emotion_neutral">Neutral</string>
+    <string name="emotion_happy">Happy</string>
+    <string name="emotion_very_happy">Very happy</string>
+    <string name="emotion_add_title">How are you feeling today?</string>
+    <string name="emotion_add_how_are_your_feelings">How is your humor right now?</string>
+    <string name="emotion_add_title_other_info">Other information</string>
+    <string name="emotion_add_description_hint">Emotion detailment...</string>
+    <string name="emotion_add_register">Register</string>
 
+    <!-- Layout editor texts only: -->
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="tools_emotion_item">Emotion</string>
+    <string name="tools_emotion_date">Register date</string>
+    <string name="tools_emotion_register_day">Day of the week | 01/01/2020</string>
 </resources>
