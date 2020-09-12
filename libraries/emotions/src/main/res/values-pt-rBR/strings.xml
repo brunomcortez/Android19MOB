@@ -11,6 +11,8 @@
     <string name="emotion_add_title_other_info">Outras informações</string>
     <string name="emotion_add_description_hint">Detalhamento da emoção...</string>
     <string name="emotion_add_register">Registrar</string>
+    <string name="emotion_add_remove">Apagar</string>
+    <string name="emotion_add_update">Atualizar</string>
 
     <!-- Layout editor texts only: -->
 

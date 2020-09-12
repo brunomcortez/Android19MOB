@@ -45,13 +45,7 @@ class EmotionsAddFragment : Fragment() {
 
     private fun configAdapters() {
         optionsAdapter = EmotionsOptionsAdapter(
-            arrayListOf(
-                EmotionOption(R.drawable.ic_very_sad, getString(R.string.emotion_very_sad)),
-                EmotionOption(R.drawable.ic_sad, getString(R.string.emotion_sad)),
-                EmotionOption(R.drawable.ic_neutral, getString(R.string.emotion_neutral)),
-                EmotionOption(R.drawable.ic_happy, getString(R.string.emotion_happy)),
-                EmotionOption(R.drawable.ic_very_happy, getString(R.string.emotion_very_happy))
-            )
+            Emotions.I.options
         ) { type, emotion ->
             onSelectEmotion(type, emotion)
         }
@@ -66,6 +60,10 @@ class EmotionsAddFragment : Fragment() {
 
     private fun configListeners() {
         binding.apply {
+            btnRemove.setOnClickListener {
+                removeEmotion()
+            }
+
             btnRegister.setOnClickListener {
                 saveEmotion()
             }
@@ -82,6 +80,8 @@ class EmotionsAddFragment : Fragment() {
 
                 etDescription.setText(emotion.detail)
 
+                btnRemove.visibility = View.VISIBLE
+                btnRegister.text = getString(R.string.emotion_add_update)
                 btnRegister.isEnabled = true
             }
         }
@@ -125,6 +125,17 @@ class EmotionsAddFragment : Fragment() {
                         }
                 }
             }
+        }
+    }
+
+    private fun removeEmotion() {
+        emotion?.let {
+            Emotions.I.removeEmotion(it)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe {
+                    goBack()
+                }
         }
     }
 

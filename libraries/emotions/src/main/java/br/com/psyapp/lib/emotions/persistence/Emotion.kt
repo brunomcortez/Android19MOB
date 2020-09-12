@@ -9,7 +9,7 @@ import java.util.*
 @Entity(tableName = "emotions")
 data class Emotion(
     @ColumnInfo(name = "emotion_kind")
-    var kind: String,
+    var kind: Int,
     @ColumnInfo(name = "emotion_detail")
     var detail: String?,
     @ColumnInfo(name = "emotion_registered")

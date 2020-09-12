@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import br.com.psyapp.lib.emotions.R
 import br.com.psyapp.lib.emotions.databinding.ListItemEmotionRegisterBinding
 import br.com.psyapp.lib.emotions.persistence.Emotion
+import java.text.DateFormat
 
 class EmotionsMapAdapter : RecyclerView.Adapter<EmotionsMapAdapter.ViewHolder>() {
 
@@ -20,8 +21,8 @@ class EmotionsMapAdapter : RecyclerView.Adapter<EmotionsMapAdapter.ViewHolder>()
             val emotion = registers[position]
 
             binding.apply {
-                tvKind.text = emotion.kind
-                tvRegistered.text = emotion.registered.toString()
+                tvKind.text = root.context.getString(emotion.kind)
+                tvRegistered.text = DateFormat.getDateTimeInstance().format(emotion.registered)
 
                 root.setOnClickListener {
                     listener?.onAction(0, position)

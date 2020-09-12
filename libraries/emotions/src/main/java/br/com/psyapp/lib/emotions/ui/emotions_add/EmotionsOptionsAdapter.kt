@@ -28,7 +28,7 @@ class EmotionsOptionsAdapter(
                 ivEmotion.setImageDrawable(
                     AppCompatResources.getDrawable(root.context, option.icon)
                 )
-                tvEmotion.text = option.name
+                tvEmotion.text = root.context.getString(option.name)
 
                 root.setOnClickListener {
                     onAction.invoke(ActionType.TOUCH, option)
