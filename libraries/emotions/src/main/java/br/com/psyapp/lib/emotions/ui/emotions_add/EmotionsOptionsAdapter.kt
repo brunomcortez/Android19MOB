@@ -1,12 +1,17 @@
 package br.com.psyapp.lib.emotions.ui.emotions_add
 
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.recyclerview.widget.RecyclerView
+import br.com.psyapp.lib.emotions.R
+import br.com.psyapp.lib.emotions.databinding.ListItemEmotionOptionBinding
+import br.com.psyapp.lib.emotions.model.EmotionOption
 
 class EmotionsOptionsAdapter(
-    private val options: ArrayList<String>,
-    private val onAction: (type: ActionType) -> Unit
+    private val options: ArrayList<EmotionOption>,
+    private val onAction: (type: ActionType, emotion: EmotionOption) -> Unit
 ) : RecyclerView.Adapter<EmotionsOptionsAdapter.ViewHolder>() {
 
     enum class ActionType(type: Int) {
@@ -14,17 +19,33 @@ class EmotionsOptionsAdapter(
     }
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        fun onBind(position: Int) {
+        private val binding = ListItemEmotionOptionBinding.bind(view)
 
+        fun onBind(position: Int) {
+            val option = options[position]
+
+            binding.apply {
+                ivEmotion.setImageDrawable(
+                    AppCompatResources.getDrawable(root.context, option.icon)
+                )
+                tvEmotion.text = option.name
+
+                root.setOnClickListener {
+                    onAction.invoke(ActionType.TOUCH, option)
+                }
+            }
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        TODO("Not yet implemented")
+        val view = LayoutInflater.from(parent.context)
+            .inflate(R.layout.list_item_emotion_option, parent, false)
+
+        return ViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        TODO("Not yet implemented")
+        holder.onBind(position)
     }
 
     override fun getItemCount(): Int = options.size

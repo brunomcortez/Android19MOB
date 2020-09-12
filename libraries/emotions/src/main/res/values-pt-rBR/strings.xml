@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="emotion_list_empty">Nenhuma emoção registrada ainda</string>
+    <string name="emotion_very_sad">Muito triste</string>
+    <string name="emotion_sad">Triste</string>
+    <string name="emotion_neutral">Neutro</string>
+    <string name="emotion_happy">Feliz</string>
+    <string name="emotion_very_happy">Muito feliz</string>
+    <string name="emotion_add_title">Como você está se sentindo hoje?</string>
+    <string name="emotion_add_how_are_your_feelings">Como está o seu humor agora?</string>
+    <string name="emotion_add_title_other_info">Outras informações</string>
+    <string name="emotion_add_description_hint">Detalhamento da emoção...</string>
+    <string name="emotion_add_register">Registrar</string>
+
+    <!-- Layout editor texts only: -->
+
+    <string name="tools_emotion_item">Emoção</string>
+    <string name="tools_emotion_date">Data de registro</string>
+    <string name="tools_emotion_register_day">Dia da semana | 01/01/2020</string>
+</resources>

@@ -4,46 +4,82 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="16dp"
     tools:context=".ui.emotions_add.EmotionsAddFragment">
 
     <TextView
         android:id="@+id/tv_title"
+        style="@style/EmotionAdd.Heading"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Como você está se sentindo hoje?"
+        android:text="@string/emotion_add_title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tv_feel"
+        style="@style/EmotionAdd"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Como está o seu humor agora?" />
-
+        android:layout_marginTop="24dp"
+        android:text="@string/emotion_add_how_are_your_feelings"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_title" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_emotions"
         android:layout_width="0dp"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_feel"
+        tools:itemCount="5"
+        tools:listitem="@layout/list_item_emotion_option" />
 
     <TextView
         android:id="@+id/tv_today"
+        style="@style/EmotionAdd.Day"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        tools:text="Dia da semana | 01/01/2020" />
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/rv_emotions"
+        tools:text="@string/tools_emotion_register_day" />
 
     <TextView
         android:id="@+id/tv_info"
+        style="@style/EmotionAdd.Heading"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Outras informações" />
+        android:layout_marginTop="24dp"
+        android:text="@string/emotion_add_title_other_info"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_today" />
+
+    <EditText
+        android:id="@+id/et_description"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/emotion_add_description_hint"
+        android:importantForAutofill="no"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_info" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_register"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Registrar"
+        android:text="@string/emotion_add_register"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import br.com.psyapp.lib.emotions.R
-import br.com.psyapp.lib.emotions.databinding.ListItemEmotionBinding
+import br.com.psyapp.lib.emotions.databinding.ListItemEmotionRegisterBinding
 import br.com.psyapp.lib.emotions.persistence.Emotion
 
 class EmotionsMapAdapter : RecyclerView.Adapter<EmotionsMapAdapter.ViewHolder>() {
@@ -14,7 +14,7 @@ class EmotionsMapAdapter : RecyclerView.Adapter<EmotionsMapAdapter.ViewHolder>()
     var listener: EmotionsMapListener? = null
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        private val binding = ListItemEmotionBinding.bind(view)
+        private val binding = ListItemEmotionRegisterBinding.bind(view)
 
         fun onBind(position: Int) {
             val emotion = registers[position]
@@ -32,7 +32,7 @@ class EmotionsMapAdapter : RecyclerView.Adapter<EmotionsMapAdapter.ViewHolder>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.list_item_emotion, parent, false)
+            .inflate(R.layout.list_item_emotion_register, parent, false)
 
         return ViewHolder(view)
     }
