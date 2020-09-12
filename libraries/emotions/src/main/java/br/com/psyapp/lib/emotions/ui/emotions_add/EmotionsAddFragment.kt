@@ -75,7 +75,14 @@ class EmotionsAddFragment : Fragment() {
         emotion?.let { emotion ->
             binding.apply {
                 optionsAdapter.options.forEach {
-                    it.selected = it.name == emotion.kind
+                    if (it.name == emotion.kind) {
+                        selectedOption = it
+
+                        it.selected = true
+                    } else {
+
+                        it.selected = false
+                    }
                 }
                 optionsAdapter.notifyDataSetChanged()
 
