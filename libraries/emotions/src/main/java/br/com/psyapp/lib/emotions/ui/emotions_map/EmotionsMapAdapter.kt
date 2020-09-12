@@ -3,7 +3,9 @@ package br.com.psyapp.lib.emotions.ui.emotions_map
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.recyclerview.widget.RecyclerView
+import br.com.psyapp.lib.emotions.Emotions
 import br.com.psyapp.lib.emotions.R
 import br.com.psyapp.lib.emotions.databinding.ListItemEmotionRegisterBinding
 import br.com.psyapp.lib.emotions.persistence.Emotion
@@ -21,6 +23,14 @@ class EmotionsMapAdapter : RecyclerView.Adapter<EmotionsMapAdapter.ViewHolder>()
             val emotion = registers[position]
 
             binding.apply {
+                val option = Emotions.I.options.find { it.name == emotion.kind }
+
+                option?.let {
+                    ivEmotion.setImageDrawable(
+                        AppCompatResources.getDrawable(root.context, it.icon)
+                    )
+                }
+
                 tvKind.text = root.context.getString(emotion.kind)
                 tvRegistered.text = DateFormat.getDateTimeInstance().format(emotion.registered)
 
