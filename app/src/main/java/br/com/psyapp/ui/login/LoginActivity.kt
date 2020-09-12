@@ -2,20 +2,22 @@ package br.com.psyapp.ui.login
 
 import android.app.Activity
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
-import androidx.lifecycle.MutableLiveData
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
-import br.com.psyapp.*
+import br.com.psyapp.KEY_EMAIL
+import br.com.psyapp.KEY_PASSWORD
+import br.com.psyapp.R
+import br.com.psyapp.RESULT_SIGNUP
 import br.com.psyapp.exceptions.EmailInvalidException
 import br.com.psyapp.exceptions.PasswordInvalidException
-import br.com.psyapp.extensions.isValidEmail
 import br.com.psyapp.models.RequestState
 import br.com.psyapp.ui.extensions.showMessage
-import com.google.firebase.auth.FirebaseAuth
 import br.com.psyapp.ui.signup.SignupActivity
+import br.com.psyapp.utils.PsyTracker
+import com.google.firebase.analytics.FirebaseAnalytics
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity() {
@@ -50,7 +52,7 @@ class LoginActivity : AppCompatActivity() {
         tvNewAccount?.setOnClickListener { createAccountPressed() }
 
         loginViewModel.resetPasswordState.observe(this, Observer {
-            when(it) {
+            when (it) {
                 is RequestState.Success -> {
                     hideLoading()
                     showMessage(it.data)
@@ -69,6 +71,7 @@ class LoginActivity : AppCompatActivity() {
                     showLoading()
                 }
                 is RequestState.Success -> {
+                    logLoginEvent()
                     hideLoading()
                     showSuccess()
                 }
@@ -124,5 +127,11 @@ class LoginActivity : AppCompatActivity() {
     private fun hideLoading() {
         pb?.visibility = View.GONE
         btLogin?.visibility = View.VISIBLE
+    }
+
+    private fun logLoginEvent() {
+        val bundle = Bundle()
+        bundle.putString(FirebaseAnalytics.Param.METHOD, "login")
+        PsyTracker.trackEvent(this, FirebaseAnalytics.Event.LOGIN, bundle)
     }
 }

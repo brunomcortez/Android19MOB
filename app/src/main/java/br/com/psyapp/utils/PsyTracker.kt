@@ -5,8 +5,9 @@ import android.os.Bundle
 import com.google.firebase.analytics.FirebaseAnalytics
 
 object PsyTracker {
-    fun trackEvent(activity: Activity, bundle: Bundle) {
+    fun trackEvent(activity: Activity, eventKey: String, bundle: Bundle) {
         val mFirebaseAnalytics = FirebaseAnalytics.getInstance(activity)
-        mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_ITEM, bundle);
+        mFirebaseAnalytics.logEvent(eventKey, bundle)
+        println("debug event logged")
     }
 }
