@@ -2,6 +2,7 @@ package br.com.psyapp.lib.emotions
 
 import br.com.psyapp.lib.emotions.config.adaptersModule
 import br.com.psyapp.lib.emotions.config.dataSourceModule
+import br.com.psyapp.lib.emotions.model.EmotionOption
 import br.com.psyapp.lib.emotions.persistence.Emotion
 import br.com.psyapp.lib.emotions.persistence.EmotionsDatabase
 import io.reactivex.Completable
@@ -13,6 +14,14 @@ import org.koin.core.inject
 import java.util.*
 
 class Emotions : KoinComponent {
+
+    val options = arrayListOf(
+        EmotionOption(R.drawable.ic_very_sad, R.string.emotion_very_sad),
+        EmotionOption(R.drawable.ic_sad, R.string.emotion_sad),
+        EmotionOption(R.drawable.ic_neutral, R.string.emotion_neutral),
+        EmotionOption(R.drawable.ic_happy, R.string.emotion_happy),
+        EmotionOption(R.drawable.ic_very_happy, R.string.emotion_very_happy)
+    )
 
     private val database: EmotionsDatabase by inject()
 
@@ -29,7 +38,7 @@ class Emotions : KoinComponent {
             .getEmotionByRegisterBetween(weekFirstDay.time, weekLastDay.time)
     }
 
-    fun registerEmotion(kind: String, detail: String?, date: Date? = null): Completable {
+    fun registerEmotion(kind: Int, detail: String?, date: Date? = null): Completable {
         val registered =
             if (date != null) java.sql.Date(date.time) else java.sql.Date(Calendar.getInstance().timeInMillis)
         val emotion = Emotion(kind, detail, registered)

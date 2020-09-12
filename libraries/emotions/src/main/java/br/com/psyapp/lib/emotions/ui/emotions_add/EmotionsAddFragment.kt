@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import br.com.psyapp.lib.emotions.Emotions
 import br.com.psyapp.lib.emotions.R
 import br.com.psyapp.lib.emotions.databinding.FragmentEmotionsAddBinding
+import br.com.psyapp.lib.emotions.extensions.hideKeyboard
 import br.com.psyapp.lib.emotions.model.EmotionOption
 import br.com.psyapp.lib.emotions.persistence.Emotion
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -45,13 +46,7 @@ class EmotionsAddFragment : Fragment() {
 
     private fun configAdapters() {
         optionsAdapter = EmotionsOptionsAdapter(
-            arrayListOf(
-                EmotionOption(R.drawable.ic_very_sad, getString(R.string.emotion_very_sad)),
-                EmotionOption(R.drawable.ic_sad, getString(R.string.emotion_sad)),
-                EmotionOption(R.drawable.ic_neutral, getString(R.string.emotion_neutral)),
-                EmotionOption(R.drawable.ic_happy, getString(R.string.emotion_happy)),
-                EmotionOption(R.drawable.ic_very_happy, getString(R.string.emotion_very_happy))
-            )
+            Emotions.I.options
         ) { type, emotion ->
             onSelectEmotion(type, emotion)
         }
@@ -66,6 +61,10 @@ class EmotionsAddFragment : Fragment() {
 
     private fun configListeners() {
         binding.apply {
+            btnRemove.setOnClickListener {
+                removeEmotion()
+            }
+
             btnRegister.setOnClickListener {
                 saveEmotion()
             }
@@ -76,14 +75,24 @@ class EmotionsAddFragment : Fragment() {
         emotion?.let { emotion ->
             binding.apply {
                 optionsAdapter.options.forEach {
-                    it.selected = it.name == emotion.kind
+                    if (it.name == emotion.kind) {
+                        selectedOption = it
+
+                        it.selected = true
+                    } else {
+                        it.selected = false
+                    }
                 }
                 optionsAdapter.notifyDataSetChanged()
 
                 etDescription.setText(emotion.detail)
 
+                btnRemove.visibility = View.VISIBLE
+                btnRegister.text = getString(R.string.emotion_add_update)
                 btnRegister.isEnabled = true
             }
+        } ?: optionsAdapter.options.forEach {
+            it.selected = false
         }
     }
 
@@ -110,6 +119,7 @@ class EmotionsAddFragment : Fragment() {
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe {
+                        hideKeyboard()
                         goBack()
                     }
             } else {
@@ -121,10 +131,23 @@ class EmotionsAddFragment : Fragment() {
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe {
+                            hideKeyboard()
                             goBack()
                         }
                 }
             }
+        }
+    }
+
+    private fun removeEmotion() {
+        emotion?.let {
+            Emotions.I.removeEmotion(it)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe {
+                    hideKeyboard()
+                    goBack()
+                }
         }
     }
 
