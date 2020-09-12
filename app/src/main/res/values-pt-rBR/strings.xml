@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="label_telephone">Telefone</string>
+    <string name="label_accept_terms">I li e concordo com os termos</string>
+    <string name="button_create_account">Criar Conta</string>
+    <string name="button_i_have_account">já tenho uma conta</string>
+    <string name="label_create_account">Criar Conta</string>
+    <string name="label_reset_password">Resetar Senha</string>
+    <string name="login_subtitle">Subtítulo</string>
+    <string name="label_password">Senha</string>
+    <string name="title_about">Sobre</string>
+    <string name="title_profile">Perfil</string>
+    <string name="title_map">Buscar</string>
+    <string name="title_signup">Cadastrar</string>
+    <string name="title_login">Login</string>
+    <string name="title_notifications">Notificações</string>
+    <string name="label_name">Nome</string>
+    <string name="signup_subtitle">Preencha suas informações</string>
+    <string name="app_logo_description">Logo Aplicativo</string>
+    <string name="app_version_label">Versão: %1Ss</string>
+    <string name="btShareText">Compartilhar</string>
+    <string name="btLogoutText">Sair do app</string>
+    <string name="website_link">Olá! Conheça o Psy App:\\nhttps://psyapp.netlify.app/</string>
+    <string name="title_home" translatable="false">Diário</string>
+    <string name="title_dashboard" translatable="false">Painel</string>
+</resources>

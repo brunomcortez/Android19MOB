@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Psy</string>
+    <string name="app_name" translatable="false">Psy</string>
     <string name="title_home">Diary</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
@@ -8,9 +8,9 @@
     <string name="title_map">Search</string>
     <string name="title_profile">Profile</string>
     <string name="title_about">About</string>
-    <string name="label_email">Email</string>
+    <string name="label_email" translatable="false">Email</string>
     <string name="label_password">Password</string>
-    <string name="button_login">Login</string>
+    <string name="button_login" translatable="false">Login</string>
     <string name="login_subtitle">Subtitle</string>
     <string name="label_reset_password">Reset Password</string>
     <string name="label_create_account">Create Account</string>
@@ -22,14 +22,14 @@
     <string name="signup_subtitle">Fill in your account details</string>
     <string name="app_logo_description">App logo</string>
     <string name="app_version_label">Version: %1$s</string>
-    <string name="tv_bruno">Bruno Cortez</string>
-    <string name="tv_decio">Décio Montanhani</string>
-    <string name="tv_pedro">Pedro Xudre</string>
-    <string name="tv_vitor">Vitor Ferraz</string>
-    <string name="default_notification_channel_id">fcm_default_channel</string>
+    <string name="tv_bruno" translatable="false">Bruno Cortez</string>
+    <string name="tv_decio" translatable="false">Décio Montanhani</string>
+    <string name="tv_pedro" translatable="false">Pedro Xudre</string>
+    <string name="tv_vitor" translatable="false">Vitor Ferraz</string>
+    <string name="default_notification_channel_id" translatable="false">fcm_default_channel</string>
     <string name="btShareText">Share</string>
     <string name="btLogoutText">Logout</string>
-    <string name="website_link">Olá! Conheça o Psy App:\nhttps://psyapp.netlify.app/</string>
-    <string name="user_id">Id: </string>
-    <string name="user_email">Email: </string>
+    <string name="website_link">Hi! Get to know more about Psy App:\nhttps://psyapp.netlify.app/</string>
+    <string name="user_id" translatable="false">Id: </string>
+    <string name="user_email" translatable="false">Email: </string>
 </resources>
