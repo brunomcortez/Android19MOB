@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<defaultsMap>
+    <entry>
+        <key>feature_config</key>
+        <value>{"DIARY":{"status":"ENABLED"},"SEARCH":{"status":"ENABLED"},"PROFILE":{"status":"ENABLED"},"ABOUT":{"status":"ENABLED"}}</value>
+    </entry>
+</defaultsMap>

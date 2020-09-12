@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
 
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
         val navController = findNavController(R.id.nav_host_fragment)
-        val tabBarItems = arrayListOf("HOME", "MAP", "PROFILE", "ABOUT")
+        val tabBarItems = arrayListOf("DIARY", "SEARCH", "PROFILE", "ABOUT")
         val iterator = tabBarItems.iterator()
 
         navView.apply {
@@ -110,7 +110,7 @@ class MainActivity : AppCompatActivity() {
                             }
 
                             override fun onDisabled(clickListener: (Context) -> Unit) {
-
+                                navView.menu.getItem(index).isVisible = false
                             }
                         })
                 }

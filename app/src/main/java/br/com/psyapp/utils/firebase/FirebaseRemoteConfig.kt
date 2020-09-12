@@ -18,6 +18,7 @@ object RemoteConfigUtils {
             minimumFetchIntervalInSeconds = 3600
         }
 
+        remoteConfig.setDefaultsAsync(R.xml.remote_config_defaults)
         remoteConfig.setConfigSettingsAsync(configSettings)
         val cacheExpiration = if (BuildConfig.DEBUG) 0L else 720L
         remoteConfig.fetch(cacheExpiration)
