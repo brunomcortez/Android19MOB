@@ -56,7 +56,10 @@ class EmotionsMapFragment : Fragment(), EmotionsMapListener {
 
                 emotionsMapAdapter.notifyDataSetChanged()
 
-                binding.tvEmpty.visibility = if (it.size > 0) View.GONE else View.VISIBLE
+                binding.apply {
+                    ivEmpty.visibility = if (it.size > 0) View.GONE else View.VISIBLE
+                    tvEmpty.visibility = if (it.size > 0) View.GONE else View.VISIBLE
+                }
             }
     }
 
