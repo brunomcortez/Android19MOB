@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.psyapp.lib.emotions.Emotions
 import br.com.psyapp.lib.emotions.R
@@ -32,8 +33,8 @@ class EmotionsMapFragment : Fragment(), EmotionsMapListener {
         super.onActivityCreated(savedInstanceState)
 
         configListeners()
-        configLists()
         configObservers()
+        configAdapter()
     }
 
     private fun configListeners() {
@@ -43,13 +44,6 @@ class EmotionsMapFragment : Fragment(), EmotionsMapListener {
             btnNew.setOnClickListener {
                 newEmotion()
             }
-        }
-    }
-
-    private fun configLists() {
-        binding.rvEmotions.apply {
-            adapter = emotionsMapAdapter
-            layoutManager = LinearLayoutManager(context)
         }
     }
 
@@ -64,6 +58,17 @@ class EmotionsMapFragment : Fragment(), EmotionsMapListener {
 
                 binding.tvEmpty.visibility = if (it.size > 0) View.GONE else View.VISIBLE
             }
+    }
+
+    private fun configAdapter() {
+        binding.rvEmotions.apply {
+            adapter = emotionsMapAdapter
+            layoutManager = LinearLayoutManager(context)
+
+            ItemTouchHelper(EmotionsMapSwipeActions(emotionsMapAdapter)).also {
+                it.attachToRecyclerView(this)
+            }
+        }
     }
 
     private fun newEmotion() {

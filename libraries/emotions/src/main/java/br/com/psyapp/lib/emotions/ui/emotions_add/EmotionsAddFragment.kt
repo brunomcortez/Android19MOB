@@ -92,6 +92,8 @@ class EmotionsAddFragment : Fragment() {
                 btnRegister.text = getString(R.string.emotion_add_update)
                 btnRegister.isEnabled = true
             }
+        } ?: optionsAdapter.options.forEach {
+            it.selected = false
         }
     }
 
