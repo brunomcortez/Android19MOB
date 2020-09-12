@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import br.com.psyapp.lib.emotions.Emotions
 import br.com.psyapp.lib.emotions.R
 import br.com.psyapp.lib.emotions.databinding.FragmentEmotionsAddBinding
+import br.com.psyapp.lib.emotions.extensions.hideKeyboard
 import br.com.psyapp.lib.emotions.model.EmotionOption
 import br.com.psyapp.lib.emotions.persistence.Emotion
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -110,6 +111,7 @@ class EmotionsAddFragment : Fragment() {
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe {
+                        hideKeyboard()
                         goBack()
                     }
             } else {
@@ -121,6 +123,7 @@ class EmotionsAddFragment : Fragment() {
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe {
+                            hideKeyboard()
                             goBack()
                         }
                 }
@@ -134,6 +137,7 @@ class EmotionsAddFragment : Fragment() {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe {
+                    hideKeyboard()
                     goBack()
                 }
         }
