@@ -8,6 +8,5 @@ object PsyTracker {
     fun trackEvent(activity: Activity, eventKey: String, bundle: Bundle) {
         val mFirebaseAnalytics = FirebaseAnalytics.getInstance(activity)
         mFirebaseAnalytics.logEvent(eventKey, bundle)
-        println("debug event logged")
     }
 }

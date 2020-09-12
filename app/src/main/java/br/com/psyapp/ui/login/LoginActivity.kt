@@ -71,7 +71,7 @@ class LoginActivity : AppCompatActivity() {
                     showLoading()
                 }
                 is RequestState.Success -> {
-                    logLoginEvent()
+                    trackLoginEvent()
                     hideLoading()
                     showSuccess()
                 }
@@ -129,7 +129,7 @@ class LoginActivity : AppCompatActivity() {
         btLogin?.visibility = View.VISIBLE
     }
 
-    private fun logLoginEvent() {
+    private fun trackLoginEvent() {
         val bundle = Bundle()
         bundle.putString(FirebaseAnalytics.Param.METHOD, "login")
         PsyTracker.trackEvent(this, FirebaseAnalytics.Event.LOGIN, bundle)
