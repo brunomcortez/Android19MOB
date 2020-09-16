@@ -14,6 +14,7 @@ import br.com.psyapp.KEY_PASSWORD
 import br.com.psyapp.R
 import br.com.psyapp.models.NewUser
 import br.com.psyapp.models.RequestState
+import br.com.psyapp.ui.extensions.adjustSystemLayout
 import br.com.psyapp.ui.extensions.showMessage
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_signup.*
@@ -25,7 +26,11 @@ class SignupActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        adjustSystemLayout()
+
         setContentView(R.layout.activity_signup)
+
         initView()
         registerObserver()
     }

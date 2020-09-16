@@ -3,12 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="br.com.psyapp.ui.home.HomeFragment"
+    tools:context="br.com.psyapp.lib.emotions.EmotionsFragment"
     tools:viewBindingIgnore="true">
 
     <fragment
         android:id="@+id/frag_emotion_map"
         android:name="br.com.psyapp.lib.emotions.EmotionsFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        tools:ignore="FragmentTagUsage" />
 </androidx.constraintlayout.widget.ConstraintLayout>

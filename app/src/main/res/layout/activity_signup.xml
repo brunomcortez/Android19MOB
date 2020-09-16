@@ -4,18 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/colorPrimary"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@+id/tvSubTitleSignUp">
 
     <LinearLayout
-        android:padding="32dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="32dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -25,10 +26,10 @@
                 android:id="@+id/ivLogoApp"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
+                android:contentDescription="@string/app_logo_description"
                 android:src="@drawable/ic_logo_psy"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:contentDescription="@string/app_logo_description" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/tvAppName"
@@ -55,23 +56,24 @@
                 app:layout_constraintTop_toBottomOf="@+id/tvAppName" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-
         <LinearLayout
-            android:layout_marginTop="32dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
             android:orientation="vertical">
-
 
             <LinearLayout style="@style/container_edit_text">
 
                 <TextView
                     style="@style/label_edit_text"
+                    android:labelFor="@id/etUserNameSignUp"
                     android:text="@string/label_name" />
 
                 <EditText
                     android:id="@+id/etUserNameSignUp"
                     style="@style/field_edit_text"
+                    android:importantForAutofill="no"
+                    android:inputType="textPersonName"
                     tools:text="João da Silva" />
 
             </LinearLayout>
@@ -80,11 +82,14 @@
 
                 <TextView
                     style="@style/label_edit_text"
+                    android:labelFor="@id/etEmailSignUp"
                     android:text="@string/label_email" />
 
                 <EditText
                     android:id="@+id/etEmailSignUp"
                     style="@style/field_edit_text"
+                    android:importantForAutofill="no"
+                    android:inputType="textWebEmailAddress"
                     tools:text="joaozinho@gmail.com" />
 
             </LinearLayout>
@@ -93,11 +98,14 @@
 
                 <TextView
                     style="@style/label_edit_text"
+                    android:labelFor="@id/etPhoneSignUp"
                     android:text="@string/label_telephone" />
 
                 <EditText
                     android:id="@+id/etPhoneSignUp"
                     style="@style/field_edit_text"
+                    android:importantForAutofill="no"
+                    android:inputType="phone"
                     tools:text="(11) 999999-999" />
             </LinearLayout>
 
@@ -105,21 +113,23 @@
 
                 <TextView
                     style="@style/label_edit_text"
+                    android:labelFor="@id/etPasswordSignUp"
                     android:text="@string/label_password" />
 
                 <EditText
                     android:id="@+id/etPasswordSignUp"
                     style="@style/field_edit_text"
+                    android:importantForAutofill="no"
                     android:inputType="textPassword"
                     tools:text="xxxxxx" />
             </LinearLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="16dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
                 android:orientation="horizontal">
 
                 <com.google.android.material.checkbox.MaterialCheckBox
@@ -133,15 +143,15 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:layout_marginTop="0dp"
                     android:id="@+id/tvTerms"
                     style="@style/link"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginStart="8dp"
-                    android:textColor="@color/colorTextLogin"
+                    android:layout_marginTop="0dp"
                     android:text="@string/label_accept_terms"
+                    android:textColor="@color/colorTextLogin"
                     app:layout_constraintBottom_toBottomOf="@+id/cbTermsSignUp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/cbTermsSignUp"
@@ -150,24 +160,26 @@
 
             <Button
                 android:id="@+id/btCreateAccount"
-                android:text="@string/button_create_account"
-                style="@style/button"/>
+                style="@style/button"
+                android:text="@string/button_create_account" />
+
             <ProgressBar
                 android:id="@+id/pb"
-                android:visibility="gone"
-                android:layout_gravity="center"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/btLoginSignUp"
                 style="@style/link"
                 android:layout_gravity="center"
                 android:layout_marginStart="8dp"
-                android:textColor="@color/colorTextLogin"
-                android:text="@string/button_i_have_account" />
+                android:text="@string/button_i_have_account"
+                android:textColor="@color/colorTextLogin" />
 
         </LinearLayout>
 
     </LinearLayout>
+
 </ScrollView>

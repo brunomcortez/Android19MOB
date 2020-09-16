@@ -14,6 +14,7 @@ import br.com.psyapp.RESULT_SIGNUP
 import br.com.psyapp.exceptions.EmailInvalidException
 import br.com.psyapp.exceptions.PasswordInvalidException
 import br.com.psyapp.models.RequestState
+import br.com.psyapp.ui.extensions.adjustSystemLayout
 import br.com.psyapp.ui.extensions.showMessage
 import br.com.psyapp.ui.signup.SignupActivity
 import br.com.psyapp.utils.PsyTracker
@@ -26,6 +27,9 @@ class LoginActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        adjustSystemLayout()
+
         setContentView(R.layout.activity_login)
         initView()
     }
@@ -35,7 +39,7 @@ class LoginActivity : AppCompatActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        when(requestCode) {
+        when (requestCode) {
             RESULT_SIGNUP -> {
                 if (resultCode == Activity.RESULT_OK) {
                     val email = data?.extras?.getString(KEY_EMAIL) ?: ""
@@ -114,7 +118,8 @@ class LoginActivity : AppCompatActivity() {
             is PasswordInvalidException -> {
                 etPasswordLogin.error = throwable.message
                 etPasswordLogin.requestFocus()
-            } else -> showMessage(throwable.message)
+            }
+            else -> showMessage(throwable.message)
 
         }
     }

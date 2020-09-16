@@ -19,8 +19,8 @@ object Libraries {
 
 object Versions {
     const val minSdk = 21 // Android 5.0
-    const val targetSdk = 29
-    const val compileSdk = 29
+    const val targetSdk = 30
+    const val compileSdk = 30
     const val buildGradle = "4.0.1"
     const val kotlin = "1.3.72"
     const val buildTools = "30.0.0"
@@ -77,7 +77,7 @@ object Dependencies {
     }
 
     object Android {
-        const val core = "androidx.core:core-ktx:1.3.0"
+        const val core = "androidx.core:core-ktx:1.5.0-alpha02"
         const val appcompat = "androidx.appcompat:appcompat:1.1.0"
         const val constraintLayout = "androidx.constraintlayout:constraintlayout:2.0.1"
         const val legacy = "androidx.legacy:legacy-support-v4:1.0.0"

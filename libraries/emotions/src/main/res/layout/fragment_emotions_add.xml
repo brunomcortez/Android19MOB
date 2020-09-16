@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
+    android:background="#7751DD"
+    android:paddingTop="24dp"
     tools:context=".ui.emotions_add.EmotionsAddFragment">
 
     <TextView
@@ -12,6 +13,8 @@
         style="@style/EmotionAdd.Heading"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp"
         android:text="@string/emotion_add_title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,6 +25,7 @@
         style="@style/EmotionAdd"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
         android:layout_marginTop="24dp"
         android:text="@string/emotion_add_how_are_your_feelings"
         app:layout_constraintEnd_toEndOf="parent"
@@ -34,6 +38,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:orientation="horizontal"
+        android:paddingHorizontal="16dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -58,6 +63,7 @@
         style="@style/EmotionAdd.Heading"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
         android:layout_marginTop="24dp"
         android:text="@string/emotion_add_title_other_info"
         app:layout_constraintEnd_toEndOf="parent"
@@ -68,17 +74,21 @@
         android:id="@+id/et_description"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
         android:hint="@string/emotion_add_description_hint"
         android:importantForAutofill="no"
         android:inputType="text"
+        android:textColorHint="#99FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_info" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_remove"
+        style="@style/EmotionAdd.Button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
         android:layout_marginBottom="8dp"
         android:text="@string/emotion_add_remove"
         android:visibility="gone"
@@ -89,8 +99,11 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_register"
+        style="@style/EmotionAdd.Button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="16dp"
         android:enabled="false"
         android:text="@string/emotion_add_register"
         app:layout_constraintBottom_toBottomOf="parent"
